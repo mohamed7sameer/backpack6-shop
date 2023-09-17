@@ -16,14 +16,14 @@
     "require": {
         "backpack/crud": "*",
         "backpack/pro": "*",
-        "barryvdh/laravel-dompdf": "*",
-        "illuminate/support": "*",
-        "mohamed7sameer/backpack-image-traits": "*",
-        "pragmarx/countries-laravel": "*"
+        "barryvdh/laravel-dompdf": "^2.0",
+        "illuminate/support": "~8|~9",
+        "mohamed7sameer/backpack-image-traits": "^1.0",
+        "pragmarx/countries-laravel": "^0.7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
-        "orchestra/testbench": "*"
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
     },
     "autoload": {
         "psr-4": {
