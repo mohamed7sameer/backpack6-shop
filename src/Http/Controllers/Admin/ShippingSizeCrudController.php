@@ -1,12 +1,12 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\CRUD\app\Library\Widget;
-use Eleven59\BackpackShop\Http\Requests\ShippingSizeRequest;
-use Eleven59\BackpackShop\Models\ShippingSize;
+use mohamed7sameer\BackpackShop\Http\Requests\ShippingSizeRequest;
+use mohamed7sameer\BackpackShop\Models\ShippingSize;
 
 /**
  * Class ShippingSizeCrudController

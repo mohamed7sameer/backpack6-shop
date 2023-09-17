@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Eleven59\BackpackShop Routes
+| mohamed7sameer\BackpackShop Routes
 |--------------------------------------------------------------------------
 */
 
@@ -15,7 +15,7 @@
      	(array) config('backpack.base.web_middleware', 'web'),
      ),
  ], function() {
-     Route::get('payment-result', [\Eleven59\BackpackShop\Http\Controllers\OrderController::class, 'paymentResult']);
+     Route::get('payment-result', [\mohamed7sameer\BackpackShop\Http\Controllers\OrderController::class, 'paymentResult']);
  });
 
 /**
@@ -27,12 +27,12 @@
      	(array) config('backpack.base.web_middleware', 'web'),
      ),
  ], function() {
-     Route::post('add-product', [\Eleven59\BackpackShop\Http\Controllers\CartController::class, 'add']);
-     Route::post('update-product', [\Eleven59\BackpackShop\Http\Controllers\CartController::class, 'update']);
-     Route::post('remove-product', [\Eleven59\BackpackShop\Http\Controllers\CartController::class, 'remove']);
-     Route::post('checkout', [\Eleven59\BackpackShop\Http\Controllers\OrderController::class, 'processCheckout']);
-     Route::post('payment', [\Eleven59\BackpackShop\Http\Controllers\OrderController::class, 'placeOrder']);
-     Route::get('no-payment', [\Eleven59\BackpackShop\Http\Controllers\OrderController::class, 'noPayment']);
+     Route::post('add-product', [\mohamed7sameer\BackpackShop\Http\Controllers\CartController::class, 'add']);
+     Route::post('update-product', [\mohamed7sameer\BackpackShop\Http\Controllers\CartController::class, 'update']);
+     Route::post('remove-product', [\mohamed7sameer\BackpackShop\Http\Controllers\CartController::class, 'remove']);
+     Route::post('checkout', [\mohamed7sameer\BackpackShop\Http\Controllers\OrderController::class, 'processCheckout']);
+     Route::post('payment', [\mohamed7sameer\BackpackShop\Http\Controllers\OrderController::class, 'placeOrder']);
+     Route::get('no-payment', [\mohamed7sameer\BackpackShop\Http\Controllers\OrderController::class, 'noPayment']);
  });
 
 
@@ -45,7 +45,7 @@ Route::group([
         (array) config('backpack.base.web_middleware', 'web'),
         (array) config('backpack.base.middleware_key', 'admin')
     ),
-    'namespace' => 'Eleven59\BackpackShop\Http\Controllers\Admin',
+    'namespace' => 'mohamed7sameer\BackpackShop\Http\Controllers\Admin',
 ], function () {
     Route::crud('vat-class', 'VatClassCrudController');
     Route::crud('shipping-region', 'ShippingRegionCrudController');
@@ -66,12 +66,12 @@ Route::group([
     'middleware' => array_merge(
         (array) config('backpack.base.web_middleware', 'web')
     ),
-    'namespace' => 'Eleven59\BackpackShop\Http\Controllers\Admin',
+    'namespace' => 'mohamed7sameer\BackpackShop\Http\Controllers\Admin',
 ], function() {
     if(env('APP_DEBUG')) {
-        Route::get('/pdf/{order_id}', [\Eleven59\BackpackShop\Http\Controllers\DebugController::class, 'pdf']);
-        Route::get('/pdf-html/{order_id}', [\Eleven59\BackpackShop\Http\Controllers\DebugController::class, 'pdf_html']);
-        Route::get('/email/{order_id}', [\Eleven59\BackpackShop\Http\Controllers\DebugController::class, 'email']);
-        Route::get('/email-html/{order_id}', [\Eleven59\BackpackShop\Http\Controllers\DebugController::class, 'email_html']);
+        Route::get('/pdf/{order_id}', [\mohamed7sameer\BackpackShop\Http\Controllers\DebugController::class, 'pdf']);
+        Route::get('/pdf-html/{order_id}', [\mohamed7sameer\BackpackShop\Http\Controllers\DebugController::class, 'pdf_html']);
+        Route::get('/email/{order_id}', [\mohamed7sameer\BackpackShop\Http\Controllers\DebugController::class, 'email']);
+        Route::get('/email-html/{order_id}', [\mohamed7sameer\BackpackShop\Http\Controllers\DebugController::class, 'email_html']);
     }
 });

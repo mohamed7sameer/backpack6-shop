@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop\Models;
+namespace mohamed7sameer\BackpackShop\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

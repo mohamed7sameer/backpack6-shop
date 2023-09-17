@@ -26,7 +26,7 @@ Quick nav:
 
 ### 1.1 Categories
 
-Just use the `Eleven59\BackpackShop\Models\ProductCategory` model like you would any other CRUD model. For example:
+Just use the `mohamed7sameer\BackpackShop\Models\ProductCategory` model like you would any other CRUD model. For example:
 
 ```php
 $categories = ProductCategory::has('products')->orderBy('name')->get();
@@ -48,7 +48,7 @@ See `product_categories` table or CRUD for the available field names here.
 
 ### 1.2 Products
 
-Get all products in a category using `$category->products` or use the `Eleven59\BackpackShop\Models\Product` model like you would any other CRUD model. For example:
+Get all products in a category using `$category->products` or use the `mohamed7sameer\BackpackShop\Models\Product` model like you would any other CRUD model. For example:
 
 ```php
 // Category products
@@ -152,7 +152,7 @@ The `product_count` variable is provided so you can update the cart product coun
 
 If you need do all of the above yourself for whatever reason, you can use the `shoppingcart()->addItem(Product $product, int $quantity = 1, array $variation = [])` function.
 
-- `$product` needs to be an instance of `Eleven59\BackpackShop\Models\Product`
+- `$product` needs to be an instance of `mohamed7sameer\BackpackShop\Models\Product`
 - `$quantity` needs to be a positive integer
 - `$variation` needs to be empty, or an array containing at least the `'id'` property of the variation you want to add
 
@@ -188,7 +188,7 @@ The `product_count` variable is again provided so you can update the cart produc
 
 If you need do all of the above yourself for whatever reason, you can use the `shoppingcart()->updateQuantity(Product $product, int $quantity = 1, array $variation = [])` function.
 
-- `$product` needs to be an instance of `Eleven59\BackpackShop\Models\Product`
+- `$product` needs to be an instance of `mohamed7sameer\BackpackShop\Models\Product`
 - `$quantity` needs to be a positive integer
 - `$variation` needs to be empty, or an array containing at least the `'id'` property of the variation you want to update
 
@@ -223,7 +223,7 @@ The `product_count` variable is again provided so you can update the cart produc
 
 If you need do all of the above yourself for whatever reason, you can use the `shoppingcart()->removeItem(Product $product, array $variation = [])` function.
 
-- `$product` needs to be an instance of `Eleven59\BackpackShop\Models\Product`
+- `$product` needs to be an instance of `mohamed7sameer\BackpackShop\Models\Product`
 - `$variation` needs to be empty, or an array containing at least the `'id'` property of the variation you want to remove
 
 &nbsp;
@@ -245,7 +245,7 @@ The `shoppingcart()->product_count` variable can be used to display how many pro
 Using `shoppingcart()->products`, you can display the products in the cart:
 
 ```html
-@php($currencySign = config('eleven59.backpack-shop.currency.sign'))
+@php($currencySign = config('mohamed7sameer.backpack-shop.currency.sign'))
 @forelse(shoppingcart()->products as $product)
     <div class="cart-product">
         <div class="cart-product-img">
@@ -337,7 +337,7 @@ This package comes with a function `bpshop_shipping_countries()` that you can us
 
 ```html
 <select class="select2" name="country" id="checkout-country">
-    @php($current_country = old('country', shoppingcart()->getAddress('country')) ?: config('eleven59.backpack-shop.default_shipping_country'))
+    @php($current_country = old('country', shoppingcart()->getAddress('country')) ?: config('mohamed7sameer.backpack-shop.default_shipping_country'))
     @foreach(bpshop_shipping_countries() as $country)
         <option value="{{ $country }}" {{ $current_country === $country ? 'selected' : '' }}>{{ $country }}</option>
     @endforeach

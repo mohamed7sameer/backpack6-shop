@@ -1,9 +1,9 @@
 <?php
 
-namespace Eleven59\BackpackShop\Models;
+namespace mohamed7sameer\BackpackShop\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Eleven59\BackpackImageTraits\Traits\HasImageFields;
+use mohamed7sameer\BackpackImageTraits\Traits\HasImageFields;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

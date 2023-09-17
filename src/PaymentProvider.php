@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop;
+namespace mohamed7sameer\BackpackShop;
 
 use Illuminate\Http\Request;
 

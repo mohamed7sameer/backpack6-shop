@@ -1,9 +1,9 @@
 <?php
 
-namespace Eleven59\BackpackShop;
+namespace mohamed7sameer\BackpackShop;
 
 use Backpack\CRUD\ViewNamespaces;
-use Eleven59\BackpackShop\Console\Commands\Install;
+use mohamed7sameer\BackpackShop\Console\Commands\Install;
 
 /**
  * This trait automatically loads package stuff, if they're present

@@ -93,7 +93,7 @@ If you discover any security related issues, please send an email to [info@moham
 
 ## Credits
 
-- Author: [mohammed-samir.com](https://mohammed-samir.com) (github: [eleven59](https://github.com/eleven59))
+- Author: [mohammed-samir.com](https://mohammed-samir.com) (github: [mohamed7sameer](https://github.com/mohamed7sameer))
 - Built with [Backpack for Laravel](https://backpackforlaravel.com). Special thanks to [Cristian Tăbăcitu](https://github.com/tabacitu) and the rest of the Backpack team for the awesome work.
 
 ## License

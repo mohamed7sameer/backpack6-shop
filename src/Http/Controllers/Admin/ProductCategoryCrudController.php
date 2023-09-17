@@ -1,10 +1,10 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Eleven59\BackpackShop\Http\Requests\ProductCategoryRequest;
+use mohamed7sameer\BackpackShop\Http\Requests\ProductCategoryRequest;
 use function config;
 
 /**
@@ -27,7 +27,7 @@ class ProductCategoryCrudController extends CrudController
      */
     public function setup() :void
     {
-        CRUD::setModel(\Eleven59\BackpackShop\Models\ProductCategory::class);
+        CRUD::setModel(\mohamed7sameer\BackpackShop\Models\ProductCategory::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/product-category');
         CRUD::setEntityNameStrings(
             __('backpack-shop::product-category.crud.singular'),
@@ -62,14 +62,14 @@ class ProductCategoryCrudController extends CrudController
         CRUD::field('name')
             ->tab(__('backpack-shop::product-category.crud.tabs.info'))
             ->type('text')
-            ->wrapper(['class' => (config('eleven59.backpack-shop.hide-slugs', true) ? 'form-group col-md-12' : 'form-group col-md-6')])
+            ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'form-group col-md-12' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product-category.crud.name.label'));
 
         CRUD::field('slug')
             ->tab(__('backpack-shop::product-category.crud.tabs.info'))
             ->type('slug')
             ->target('name')
-            ->wrapper(['class' => (config('eleven59.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
+            ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product-category.crud.slug.label'))
             ->hint(__('backpack-shop::product-category.crud.slug.hint'));
 
@@ -85,10 +85,10 @@ class ProductCategoryCrudController extends CrudController
                 ->tab(__('backpack-shop::product-category.crud.tabs.media'))
                 ->type('image')
                 ->label(__('backpack-shop::product-category.crud.cover.label'))
-                ->aspect_ratio(config('eleven59.backpack-shop.category-cover.aspect-ratio', 0))
-                ->crop(config('eleven59.backpack-shop.category-cover.crop', true))
-                ->disk(config('eleven59.backpack-shop.category-cover.disk', null))
-                ->prefix(config('eleven59.backpack-shop.category-cover.prefix', null));
+                ->aspect_ratio(config('mohamed7sameer.backpack-shop.category-cover.aspect-ratio', 0))
+                ->crop(config('mohamed7sameer.backpack-shop.category-cover.crop', true))
+                ->disk(config('mohamed7sameer.backpack-shop.category-cover.disk', null))
+                ->prefix(config('mohamed7sameer.backpack-shop.category-cover.prefix', null));
         }
 
         /* Meta/SEO fields */
@@ -119,10 +119,10 @@ class ProductCategoryCrudController extends CrudController
                 ->type('image')
                 ->label(__('backpack-shop::product-category.crud.meta-image.label'))
                 ->hint(__('backpack-shop::product-category.crud.meta-image.hint'))
-                ->aspect_ratio(config('eleven59.backpack-shop.category-meta-image.aspect-ratio', 1.91))
-                ->crop(config('eleven59.backpack-shop.category-meta-image.crop', true))
-                ->disk(config('eleven59.backpack-shop.category-meta-image.disk', null))
-                ->prefix(config('eleven59.backpack-shop.category-meta-image.prefix', null));
+                ->aspect_ratio(config('mohamed7sameer.backpack-shop.category-meta-image.aspect-ratio', 1.91))
+                ->crop(config('mohamed7sameer.backpack-shop.category-meta-image.crop', true))
+                ->disk(config('mohamed7sameer.backpack-shop.category-meta-image.disk', null))
+                ->prefix(config('mohamed7sameer.backpack-shop.category-meta-image.prefix', null));
         }
     }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Eleven59\BackpackShop\Mail;
+namespace mohamed7sameer\BackpackShop\Mail;
 
-use Eleven59\BackpackShop\Models\Order;
+use mohamed7sameer\BackpackShop\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -39,7 +39,7 @@ class Invoice extends Mailable implements ShouldQueue
     {
         return $this->replyTo($this->copy ? $this->order->email : config('mail.from.address'), $this->copy ? $this->order->name : config('mail.from.name'))
             ->subject($this->subject)
-            ->view(config('eleven59.backpack-shop.invoice-mail-view', 'backpack-shop::email.invoice'))
+            ->view(config('mohamed7sameer.backpack-shop.invoice-mail-view', 'backpack-shop::email.invoice'))
             ->attach($this->invoice);
     }
 }

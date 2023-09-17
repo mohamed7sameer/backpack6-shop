@@ -1,10 +1,10 @@
 <?php
 
-namespace Eleven59\BackpackShop\Models;
+namespace mohamed7sameer\BackpackShop\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Eleven59\BackpackImageTraits\Traits\HasImageFields;
-use Eleven59\BackpackImageTraits\Traits\HasImagesInRepeatableFields;
+use mohamed7sameer\BackpackImageTraits\Traits\HasImageFields;
+use mohamed7sameer\BackpackImageTraits\Traits\HasImagesInRepeatableFields;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -108,7 +108,7 @@ class Product extends Model
      */
     public function getSalesVat(string $variation_id = null) :float
     {
-        $pricesIncludeVat = config('eleven59.backpack-shop.prices_include_vat', true);
+        $pricesIncludeVat = config('mohamed7sameer.backpack-shop.prices_include_vat', true);
         $price = $this->getSalesPrice($variation_id);
         $vatMultiplier = 1 + ($this->vat_class->vat_percentage / 100);
         return $pricesIncludeVat ? ($price - ($price / $vatMultiplier)) : (($price * $vatMultiplier) - $price);
@@ -122,7 +122,7 @@ class Product extends Model
     public function getSalesPriceExclVat(string $variation_id = null) :float
     {
         $price = $this->getSalesPrice($variation_id);
-        if(!config('eleven59.backpack-shop.prices_include_vat', true)) {
+        if(!config('mohamed7sameer.backpack-shop.prices_include_vat', true)) {
             return $price;
         }
         $vatMultiplier = 1 + ($this->vat_class->vat_percentage / 100);
@@ -137,7 +137,7 @@ class Product extends Model
     public function getSalesPriceInclVat(string $variation_id = null) :float
     {
         $price = $this->getSalesPrice($variation_id);
-        if(config('eleven59.backpack-shop.prices_include_vat', true)) {
+        if(config('mohamed7sameer.backpack-shop.prices_include_vat', true)) {
             return $price;
         }
         $vatMultiplier = 1 + ($this->vat_class->vat_percentage / 100);

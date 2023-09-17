@@ -1,10 +1,10 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers;
+namespace mohamed7sameer\BackpackShop\Http\Controllers;
 
-use Eleven59\BackpackShop\Http\Requests\CheckoutRequest;
-use Eleven59\BackpackShop\Http\Requests\OrderRequest;
-use Eleven59\BackpackShop\Traits\HandlesOrders;
+use mohamed7sameer\BackpackShop\Http\Requests\CheckoutRequest;
+use mohamed7sameer\BackpackShop\Http\Requests\OrderRequest;
+use mohamed7sameer\BackpackShop\Traits\HandlesOrders;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -52,7 +52,7 @@ class OrderController extends Controller
     {
         $this->updatePayment($request->get('order_id'));
         shoppingcart()->empty();
-        return view(config('eleven59.backpack-shop.payment-return-view'), [
+        return view(config('mohamed7sameer.backpack-shop.payment-return-view'), [
             'payment_result' => [
                 'status' => 'new',
                 'msg' => __('backpack-shop::order.status-messages.new'),
@@ -81,7 +81,7 @@ class OrderController extends Controller
             }
         }
 
-        return view(config('eleven59.backpack-shop.payment-return-view'), [
+        return view(config('mohamed7sameer.backpack-shop.payment-return-view'), [
             'payment_result' => [
                 'status' => $status,
                 'msg' => $msg,

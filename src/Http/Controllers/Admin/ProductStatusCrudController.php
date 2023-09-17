@@ -1,10 +1,10 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Eleven59\BackpackShop\Http\Requests\ProductStatusRequest;
+use mohamed7sameer\BackpackShop\Http\Requests\ProductStatusRequest;
 use function config;
 
 /**
@@ -26,7 +26,7 @@ class ProductStatusCrudController extends CrudController
      */
     public function setup() :void
     {
-        CRUD::setModel(\Eleven59\BackpackShop\Models\ProductStatus::class);
+        CRUD::setModel(\mohamed7sameer\BackpackShop\Models\ProductStatus::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/product-status');
         CRUD::setEntityNameStrings(
             __('backpack-shop::product-status.crud.singular'),
@@ -60,13 +60,13 @@ class ProductStatusCrudController extends CrudController
 
         CRUD::field('status')
             ->type('text')
-            ->wrapper(['class' => (config('eleven59.backpack-shop.hide-slugs', true) ? 'form-group col-md-12' : 'form-group col-md-6')])
+            ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'form-group col-md-12' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product-status.crud.status.label'));
 
         CRUD::field('slug')
             ->type('slug')
             ->target('status')
-            ->wrapper(['class' => (config('eleven59.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
+            ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product-status.crud.slug.label'))
             ->hint(__('backpack-shop::product-status.crud.slug.hint'));
 

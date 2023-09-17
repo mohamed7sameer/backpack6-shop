@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin\Operations;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin\Operations;
 
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Contracts\View\View;
@@ -37,7 +37,7 @@ trait DetailsOperation
         });
 
         CRUD::operation('list', function () {
-            CRUD::addButton('line', 'details', 'view', 'eleven59.backpack-shop::buttons.details', 'beginning');
+            CRUD::addButton('line', 'details', 'view', 'mohamed7sameer.backpack-shop::buttons.details', 'beginning');
         });
     }
 
@@ -58,6 +58,6 @@ trait DetailsOperation
         $this->data['entry'] = $this->crud->model::findOrFail($id);
 
         // load the view
-        return view('eleven59.backpack-shop::operations.details', $this->data);
+        return view('mohamed7sameer.backpack-shop::operations.details', $this->data);
     }
 }

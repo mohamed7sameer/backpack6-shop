@@ -1,11 +1,11 @@
 <?php
 
-namespace Eleven59\BackpackShop\Traits;
+namespace mohamed7sameer\BackpackShop\Traits;
 
-use Eleven59\BackpackShop\Http\Requests\OrderRequest;
-use Eleven59\BackpackShop\Mail\Invoice;
-use Eleven59\BackpackShop\Models\Order;
-use Eleven59\BackpackShop\PaymentProvider;
+use mohamed7sameer\BackpackShop\Http\Requests\OrderRequest;
+use mohamed7sameer\BackpackShop\Mail\Invoice;
+use mohamed7sameer\BackpackShop\Models\Order;
+use mohamed7sameer\BackpackShop\PaymentProvider;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -147,13 +147,13 @@ trait HandlesOrders
      */
     public function getPaymentProvider()
     {
-        $paymentProviderClass = config('eleven59.backpack-shop.payment_provider', null);
+        $paymentProviderClass = config('mohamed7sameer.backpack-shop.payment_provider', null);
         if(empty($paymentProviderClass)) {
             throw new Exception("The payment can not be processed because there is no payment provider configured. Please add a valid payment provider (see backpack-shop config).");
         }
         $paymentProvider = new $paymentProviderClass();
         if(!is_subclass_of($paymentProvider::class, PaymentProvider::class)) {
-            throw new Exception("The payment can not be processed because the payment provider in the config file is not a valid subclass of the abstract class Eleven59\BackpackShop\PaymentProvider.");
+            throw new Exception("The payment can not be processed because the payment provider in the config file is not a valid subclass of the abstract class mohamed7sameer\BackpackShop\PaymentProvider.");
         }
 
         return $paymentProvider;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop\Models;
+namespace mohamed7sameer\BackpackShop\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,7 +33,7 @@ class ShippingRule extends Model
      */
     public function getVat() :float
     {
-        $pricesIncludeVat = config('eleven59.backpack-shop.prices_include_vat', true);
+        $pricesIncludeVat = config('mohamed7sameer.backpack-shop.prices_include_vat', true);
         $vatMultiplier = 1 + ($this->shipping_vat_class->vat_percentage / 100);
         return $pricesIncludeVat ? ($this->price - ($this->price / $vatMultiplier)) : (($this->price * $vatMultiplier) - $this->price);
     }
@@ -44,7 +44,7 @@ class ShippingRule extends Model
      */
     public function getPriceExclVat() :float
     {
-        if(!config('eleven59.backpack-shop.prices_include_vat', true)) {
+        if(!config('mohamed7sameer.backpack-shop.prices_include_vat', true)) {
             return $this->price;
         }
         $vatMultiplier = 1 + ($this->shipping_vat_class->vat_percentage / 100);
@@ -58,7 +58,7 @@ class ShippingRule extends Model
      */
     public function getPriceInclVat() :float
     {
-        if(config('eleven59.backpack-shop.prices_include_vat', true)) {
+        if(config('mohamed7sameer.backpack-shop.prices_include_vat', true)) {
             return $this->price;
         }
         $vatMultiplier = 1 + ($this->shipping_vat_class->vat_percentage / 100);

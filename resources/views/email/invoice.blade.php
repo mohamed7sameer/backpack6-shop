@@ -5,7 +5,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    @include('eleven59.backpack-shop::email.css')
+    @include('mohamed7sameer.backpack-shop::email.css')
 
 </head>
 
@@ -29,27 +29,27 @@
                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
                     @foreach($order->order_summary['products'] as $product)
                         <tr>
-                            <td style="padding-right: 35px; padding-left: 0; padding-bottom: 7px;">{{ $product['quantity'] }} x {{ $product['description'] }} ({{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'], 2, ',', '.') }})</td>
-                            <td style="padding-bottom: 7px; text-align: right; min-width: 60px;" align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'] * $product['quantity'], 2, ',', '.') }}</td>
+                            <td style="padding-right: 35px; padding-left: 0; padding-bottom: 7px;">{{ $product['quantity'] }} x {{ $product['description'] }} ({{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'], 2, ',', '.') }})</td>
+                            <td style="padding-bottom: 7px; text-align: right; min-width: 60px;" align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'] * $product['quantity'], 2, ',', '.') }}</td>
                         </tr>
                     @endforeach
                     <tr>
                         <td style="border-top: 1px solid #222222; padding-top: 7px; padding-right: 35px; padding-left: 0;"><strong>{{ __('backpack-shop::invoice.pdf.subtotal') }}</strong></td>
-                        <td style="border-top: 1px solid #222222; padding-top: 7px; text-align: right; min-width: 60px;" align="right"><strong>{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($order->order_summary['totals']['subtotal_incl_vat'], 2, ',', '.') }}</strong></td>
+                        <td style="border-top: 1px solid #222222; padding-top: 7px; text-align: right; min-width: 60px;" align="right"><strong>{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($order->order_summary['totals']['subtotal_incl_vat'], 2, ',', '.') }}</strong></td>
                     </tr>
                     <tr>
                         <td style="padding-bottom: 7px; padding-right: 35px; padding-left: 0;"><strong>{{ __('backpack-shop::invoice.pdf.shipping') }}</strong></td>
-                        <td style="padding-bottom: 7px; text-align: right; min-width: 60px;" align="right"><strong>{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($order->order_summary['totals']['shipping_incl_vat'], 2, ',', '.') }}</strong></td>
+                        <td style="padding-bottom: 7px; text-align: right; min-width: 60px;" align="right"><strong>{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($order->order_summary['totals']['shipping_incl_vat'], 2, ',', '.') }}</strong></td>
                     </tr>
                     <tr>
                         <td style="border-top: 1px solid #222222; padding-top: 7px; padding-bottom: 7px; padding-right: 35px; padding-left: 0; text-align: right;"><strong>{{ __('backpack-shop::invoice.pdf.total') }}</strong></td>
-                        <td style="border-top: 1px solid #222222; padding-top: 7px; padding-bottom: 7px; text-align: right; min-width: 60px;" align="right"><strong>{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($order->order_summary['totals']['total_incl_vat'], 2, ',', '.') }}</strong></td>
+                        <td style="border-top: 1px solid #222222; padding-top: 7px; padding-bottom: 7px; text-align: right; min-width: 60px;" align="right"><strong>{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($order->order_summary['totals']['total_incl_vat'], 2, ',', '.') }}</strong></td>
                     </tr>
                     @if(isset($order->order_summary['totals']['vat']))
                         @foreach($order->order_summary['totals']['vat'] as $vatLine)
                             <tr>
                                 <td style="padding-bottom: 7px; padding-right: 35px; padding-left: 0; text-align: right;">{{ $vatLine['description'] }}</td>
-                                <td style="padding-bottom: 7px; text-align: right; min-width: 60px;" align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($vatLine['vat'], 2, ',', '.') }}</td>
+                                <td style="padding-bottom: 7px; text-align: right; min-width: 60px;" align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($vatLine['vat'], 2, ',', '.') }}</td>
                             </tr>
                         @endforeach
                     @endif

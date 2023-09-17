@@ -1,13 +1,13 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Eleven59\BackpackShop\Http\Requests\ShippingRuleRequest;
-use Eleven59\BackpackShop\Models\ShippingRegion;
-use Eleven59\BackpackShop\Models\ShippingSize;
-use Eleven59\BackpackShop\Models\VatClass;
+use mohamed7sameer\BackpackShop\Http\Requests\ShippingRuleRequest;
+use mohamed7sameer\BackpackShop\Models\ShippingRegion;
+use mohamed7sameer\BackpackShop\Models\ShippingSize;
+use mohamed7sameer\BackpackShop\Models\VatClass;
 use function config;
 
 /**
@@ -29,7 +29,7 @@ class ShippingRuleCrudController extends CrudController
      */
     public function setup() :void
     {
-        CRUD::setModel(\Eleven59\BackpackShop\Models\ShippingRule::class);
+        CRUD::setModel(\mohamed7sameer\BackpackShop\Models\ShippingRule::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/shipping-rule');
         CRUD::setEntityNameStrings(
             __('backpack-shop::shipping-rule.crud.singular'),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop\Models;
+namespace mohamed7sameer\BackpackShop\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -84,7 +84,7 @@ class Order extends Model
     public function makePdfInvoice($save = true, $html = false)
     {
         if($html) {
-            return view(config('eleven59.backpack-shop.invoice-pdf-view', 'backpack-shop::pdf.invoice'), [
+            return view(config('mohamed7sameer.backpack-shop.invoice-pdf-view', 'backpack-shop::pdf.invoice'), [
                 'order' => $this
             ]);
         }
@@ -101,7 +101,7 @@ class Order extends Model
             ]));
         }
 
-        $pdf->loadView(config('eleven59.backpack-shop.invoice-pdf-view', 'backpack-shop::pdf.invoice'), [
+        $pdf->loadView(config('mohamed7sameer.backpack-shop.invoice-pdf-view', 'backpack-shop::pdf.invoice'), [
             'order' => $this
         ], [], "UTF-8")->setOptions([
             'isRemoteEnabled' => true,
@@ -143,11 +143,11 @@ class Order extends Model
     public function getFancyInvoiceNoAttribute() :string
     {
         if (!empty($this->invoice_year)) {
-            $pad_length = config('eleven59.backpack-shop.invoice_no_pad_len', 4);
+            $pad_length = config('mohamed7sameer.backpack-shop.invoice_no_pad_len', 4);
             return Str::swap([
                 ":year" => Str::of($this->invoice_year),
                 ":number" => Str::padLeft($this->invoice_no, $pad_length, "0"),
-            ], config('eleven59.backpack-shop.invoice_no_format', "W:year:number"));
+            ], config('mohamed7sameer.backpack-shop.invoice_no_format', "W:year:number"));
         }
         return '';
     }
@@ -175,7 +175,7 @@ class Order extends Model
 
     public function getOrderTotalAttribute() :float
     {
-        if(config('eleven59.backpack-shop.prices_include_vat')) {
+        if(config('mohamed7sameer.backpack-shop.prices_include_vat')) {
             return $this->order_summary['totals']['total_incl_vat'];
         }
         return $this->order_summary['totals']['total_excl_vat'];

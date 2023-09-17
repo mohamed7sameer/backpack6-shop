@@ -1,10 +1,10 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Eleven59\BackpackShop\Http\Requests\ShippingRegionRequest;
+use mohamed7sameer\BackpackShop\Http\Requests\ShippingRegionRequest;
 use function config;
 
 /**
@@ -26,7 +26,7 @@ class ShippingRegionCrudController extends CrudController
      */
     public function setup() :void
     {
-        CRUD::setModel(\Eleven59\BackpackShop\Models\ShippingRegion::class);
+        CRUD::setModel(\mohamed7sameer\BackpackShop\Models\ShippingRegion::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/shipping-region');
         CRUD::setEntityNameStrings(
             __('backpack-shop::shipping-region.crud.singular'),

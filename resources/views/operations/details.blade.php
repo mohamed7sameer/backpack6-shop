@@ -46,15 +46,15 @@
                                     <tr>
                                         <td valign="top">{{ __('backpack-shop::order.details.address') }}:</td>
                                         <td valign-top>
-                                            {{ config('eleven59.backpack-shop.address.address') }}<br>
-                                            {{ config('eleven59.backpack-shop.address.zipcode') }} {{ config('eleven59.backpack-shop.address.city') }}<br>
-                                            {{ config('eleven59.backpack-shop.address.country') }}
+                                            {{ config('mohamed7sameer.backpack-shop.address.address') }}<br>
+                                            {{ config('mohamed7sameer.backpack-shop.address.zipcode') }} {{ config('mohamed7sameer.backpack-shop.address.city') }}<br>
+                                            {{ config('mohamed7sameer.backpack-shop.address.country') }}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td valign="top">{{ __('backpack-shop::order.details.phone') }}:</td>
                                         <td valign-top>
-                                            {{ config('eleven59.backpack-shop.address.phone') }}
+                                            {{ config('mohamed7sameer.backpack-shop.address.phone') }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -82,10 +82,10 @@
                                     </tr>
                                     @foreach($entry->order_summary['products'] as $product)
                                         <tr>
-                                            <td>{{ $product['quantity'] }} x {{ $product['description'] }} ({{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'], 2, ',', '.') }})</td>
-                                            <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($product['price_excl_vat'] * $product['quantity'], 2, ',', '.') }}</td>
-                                            <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($product['vat'] * $product['quantity'], 2, ',', '.') }}</td>
-                                            <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'] * $product['quantity'], 2, ',', '.') }}</td>
+                                            <td>{{ $product['quantity'] }} x {{ $product['description'] }} ({{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'], 2, ',', '.') }})</td>
+                                            <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($product['price_excl_vat'] * $product['quantity'], 2, ',', '.') }}</td>
+                                            <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($product['vat'] * $product['quantity'], 2, ',', '.') }}</td>
+                                            <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($product['price_incl_vat'] * $product['quantity'], 2, ',', '.') }}</td>
                                         </tr>
                                     @endforeach
                                     <tr>
@@ -93,15 +93,15 @@
                                     </tr>
                                     <tr>
                                         <td>{{ __('backpack-shop::order.details.subtotal') }}</td>
-                                        <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['subtotal_excl_vat'], 2, ',', '.') }}</td>
-                                        <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['subtotal_incl_vat'] - $entry->order_summary['totals']['subtotal_excl_vat'], 2, ',', '.') }}</td>
-                                        <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['subtotal_incl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['subtotal_excl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['subtotal_incl_vat'] - $entry->order_summary['totals']['subtotal_excl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['subtotal_incl_vat'], 2, ',', '.') }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ $entry->order_summary['totals']['shipping_description'] ?? __('backpack-shop::order.details.shipping') . " ({$entry->country})" }}</td>
-                                        <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['shipping_excl_vat'], 2, ',', '.') }}</td>
-                                        <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['shipping_incl_vat'] - $entry->order_summary['totals']['shipping_excl_vat'], 2, ',', '.') }}</td>
-                                        <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['shipping_incl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['shipping_excl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['shipping_incl_vat'] - $entry->order_summary['totals']['shipping_excl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['shipping_incl_vat'], 2, ',', '.') }}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"><hr></td>
@@ -111,16 +111,16 @@
                                             <tr>
                                                 <td>{{ $vatLine['description'] }}</td>
                                                 <td>&nbsp;</td>
-                                                <td align="right">{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($vatLine['vat'], 2, ',', '.') }}</td>
+                                                <td align="right">{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($vatLine['vat'], 2, ',', '.') }}</td>
                                                 <td>&nbsp;</td>
                                             </tr>
                                         @endforeach
                                     @endif
                                     <tr>
                                         <td><strong>{{ __('backpack-shop::order.details.total') }}</strong></td>
-                                        <td align="right"><strong>{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['total_excl_vat'], 2, ',', '.') }}</td>
-                                        <td align="right"><strong>{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['vat_total'], 2, ',', '.') }}</td>
-                                        <td align="right"><strong>{{ config('eleven59.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['total_incl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right"><strong>{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['total_excl_vat'], 2, ',', '.') }}</td>
+                                        <td align="right"><strong>{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['vat_total'], 2, ',', '.') }}</td>
+                                        <td align="right"><strong>{{ config('mohamed7sameer.backpack-shop.currency.sign') }} {{ number_format ($entry->order_summary['totals']['total_incl_vat'], 2, ',', '.') }}</td>
                                     </tr>
                                 </table>
                             </td>

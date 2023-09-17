@@ -1,11 +1,11 @@
 <?php
 
-namespace Eleven59\BackpackShop;
+namespace mohamed7sameer\BackpackShop;
 
-use Eleven59\BackpackShop\Models\Order;
+use mohamed7sameer\BackpackShop\Models\Order;
 use Illuminate\Http\Request;
 
-class NoPaymentProvider extends \Eleven59\BackpackShopMollie\Models\PaymentProvider
+class NoPaymentProvider extends \mohamed7sameer\BackpackShopMollie\Models\PaymentProvider
 {
     public const STATUS_TRANSLATIONS = ['pending' => 'pending', 'new' => 'new'];
     public const DEPENDENCIES = [];

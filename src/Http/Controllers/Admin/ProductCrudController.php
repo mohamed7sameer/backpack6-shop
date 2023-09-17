@@ -1,15 +1,15 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Eleven59\BackpackShop\Http\Requests\ProductRequest;
-use Eleven59\BackpackShop\Models\ProductProperty;
-use Eleven59\BackpackShop\Models\ProductCategory;
-use Eleven59\BackpackShop\Models\ProductStatus;
-use Eleven59\BackpackShop\Models\ShippingSize;
-use Eleven59\BackpackShop\Models\VatClass;
+use mohamed7sameer\BackpackShop\Http\Requests\ProductRequest;
+use mohamed7sameer\BackpackShop\Models\ProductProperty;
+use mohamed7sameer\BackpackShop\Models\ProductCategory;
+use mohamed7sameer\BackpackShop\Models\ProductStatus;
+use mohamed7sameer\BackpackShop\Models\ShippingSize;
+use mohamed7sameer\BackpackShop\Models\VatClass;
 use function config;
 
 /**
@@ -32,7 +32,7 @@ class ProductCrudController extends CrudController
      */
     public function setup() :void
     {
-        CRUD::setModel(\Eleven59\BackpackShop\Models\Product::class);
+        CRUD::setModel(\mohamed7sameer\BackpackShop\Models\Product::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/product');
         CRUD::setEntityNameStrings(
             __('backpack-shop::product.crud.singular'),
@@ -93,14 +93,14 @@ class ProductCrudController extends CrudController
         CRUD::field('name')
             ->tab(__('backpack-shop::product.crud.tabs.info'))
             ->type('text')
-            ->wrapper(['class' => (config('eleven59.backpack-shop.hide-slugs', true) ? 'form-group col-md-12' : 'form-group col-md-6')])
+            ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'form-group col-md-12' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product.crud.name.label'));
 
         CRUD::field('slug')
             ->tab(__('backpack-shop::product.crud.tabs.info'))
             ->type('slug')
             ->target('name')
-            ->wrapper(['class' => (config('eleven59.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
+            ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product.crud.slug.label'))
             ->hint(__('backpack-shop::product.crud.slug.hint'));
 
@@ -167,10 +167,10 @@ class ProductCrudController extends CrudController
                 ->tab(__('backpack-shop::product.crud.tabs.media'))
                 ->type('image')
                 ->label(__('backpack-shop::product.crud.cover.label'))
-                ->aspect_ratio(config('eleven59.backpack-shop.product-cover.aspect-ratio', 0))
-                ->crop(config('eleven59.backpack-shop.product-cover.crop', true))
-                ->disk(config('eleven59.backpack-shop.product-cover.disk', null))
-                ->prefix(config('eleven59.backpack-shop.product-cover.prefix', null));
+                ->aspect_ratio(config('mohamed7sameer.backpack-shop.product-cover.aspect-ratio', 0))
+                ->crop(config('mohamed7sameer.backpack-shop.product-cover.crop', true))
+                ->disk(config('mohamed7sameer.backpack-shop.product-cover.disk', null))
+                ->prefix(config('mohamed7sameer.backpack-shop.product-cover.prefix', null));
         }
 
         if(bpshop_show_column('product', 'photos')) {
@@ -184,10 +184,10 @@ class ProductCrudController extends CrudController
                         'name' => 'photo',
                         'type' => 'image',
                         'label' => __('backpack-shop::product.crud.photos.photo.label'),
-                        'aspect_ratio' => config('eleven59.backpack-shop.product-photos.aspect-ratio', 0),
-                        'crop' => config('eleven59.backpack-shop.product-photos.crop', true),
-                        'disk' => config('eleven59.backpack-shop.product-photos.disk', null),
-                        'prefix' => config('eleven59.backpack-shop.product-photos.prefix', null),
+                        'aspect_ratio' => config('mohamed7sameer.backpack-shop.product-photos.aspect-ratio', 0),
+                        'crop' => config('mohamed7sameer.backpack-shop.product-photos.crop', true),
+                        'disk' => config('mohamed7sameer.backpack-shop.product-photos.disk', null),
+                        'prefix' => config('mohamed7sameer.backpack-shop.product-photos.prefix', null),
                     ],
                     [
                         'hint' => __('backpack-shop::product.crud.photos.description.hint'),
@@ -284,10 +284,10 @@ class ProductCrudController extends CrudController
                     'name' => 'photo',
                     'type' => 'image',
                     'label' => __('backpack-shop::product.crud.variations.photo.label'),
-                    'aspect_ratio' => config('eleven59.backpack-shop.product-variation-photo.aspect-ratio', 0),
-                    'crop' => config('eleven59.backpack-shop.product-variation-photo.crop', true),
-                    'disk' => config('eleven59.backpack-shop.product-variation-photo.disk', null),
-                    'prefix' => config('eleven59.backpack-shop.product-variation-photo.prefix', null),
+                    'aspect_ratio' => config('mohamed7sameer.backpack-shop.product-variation-photo.aspect-ratio', 0),
+                    'crop' => config('mohamed7sameer.backpack-shop.product-variation-photo.crop', true),
+                    'disk' => config('mohamed7sameer.backpack-shop.product-variation-photo.disk', null),
+                    'prefix' => config('mohamed7sameer.backpack-shop.product-variation-photo.prefix', null),
                 ],
                 [
                     'name' => 'price',
@@ -355,14 +355,14 @@ class ProductCrudController extends CrudController
                 ->type('image')
                 ->label(__('backpack-shop::product.crud.meta-image.label'))
                 ->hint(__('backpack-shop::product.crud.meta-image.hint'))
-                ->aspect_ratio(config('eleven59.backpack-shop.category-meta-image.aspect-ratio', 1.91))
-                ->crop(config('eleven59.backpack-shop.category-meta-image.crop', true))
-                ->disk(config('eleven59.backpack-shop.category-meta-image.disk', null))
-                ->prefix(config('eleven59.backpack-shop.category-meta-image.prefix', null));
+                ->aspect_ratio(config('mohamed7sameer.backpack-shop.category-meta-image.aspect-ratio', 1.91))
+                ->crop(config('mohamed7sameer.backpack-shop.category-meta-image.crop', true))
+                ->disk(config('mohamed7sameer.backpack-shop.category-meta-image.disk', null))
+                ->prefix(config('mohamed7sameer.backpack-shop.category-meta-image.prefix', null));
         }
 
-        if(!empty(config('eleven59.backpack-shop.product_extras', []))) {
-            foreach(config('eleven59.backpack-shop.product_extras') as $name => $extra)
+        if(!empty(config('mohamed7sameer.backpack-shop.product_extras', []))) {
+            foreach(config('mohamed7sameer.backpack-shop.product_extras') as $name => $extra)
             {
                 if(is_numeric($name)) $name = $extra['name'] ?? '';
                 if(empty($name)) throw new \Exception("Please make sure all your features have a valid name. See config/mohamed7sameer/backpack6-shop.php.");

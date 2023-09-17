@@ -18,7 +18,7 @@
         "backpack/pro": "^1.0.0",
         "barryvdh/laravel-dompdf": "^2.0",
         "illuminate/support": "~8|~9",
-        "eleven59/backpack-image-traits": "^1.0",
+        "mohamed7sameer/backpack-image-traits": "^1.0",
         "pragmarx/countries-laravel": "^0.7.0"
     },
     "require-dev": {
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Eleven59\\BackpackShop\\": "src/"
+            "mohamed7sameer\\BackpackShop\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Eleven59\\BackpackShop\\Tests\\": "tests"
+            "mohamed7sameer\\BackpackShop\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -41,7 +41,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Eleven59\\BackpackShop\\AddonServiceProvider"
+                "mohamed7sameer\\BackpackShop\\AddonServiceProvider"
             ]
         }
     }

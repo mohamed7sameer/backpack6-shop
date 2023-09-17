@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers\Admin;
+namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -15,7 +15,7 @@ class OrderCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Eleven59\BackpackShop\Http\Controllers\Admin\Operations\DetailsOperation;
+    use \mohamed7sameer\BackpackShop\Http\Controllers\Admin\Operations\DetailsOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -24,7 +24,7 @@ class OrderCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\Eleven59\BackpackShop\Models\Order::class);
+        CRUD::setModel(\mohamed7sameer\BackpackShop\Models\Order::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/order');
         CRUD::setEntityNameStrings(
             __('backpack-shop::order.crud.singular'),
@@ -66,7 +66,7 @@ class OrderCrudController extends CrudController
         CRUD::column('order_total')
             ->type('number')
             ->decimals(2)
-            ->prefix(config('eleven59.backpack-shop.currency.sign', '€') . ' ')
+            ->prefix(config('mohamed7sameer.backpack-shop.currency.sign', '€') . ' ')
             ->label(__('backpack-shop::order.crud.order_total.label'));
 
         CRUD::orderBy('created_at', 'desc');

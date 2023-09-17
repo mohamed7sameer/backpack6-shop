@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Requests;
+namespace mohamed7sameer\BackpackShop\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

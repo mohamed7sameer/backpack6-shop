@@ -1,10 +1,10 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers;
+namespace mohamed7sameer\BackpackShop\Http\Controllers;
 
-use Eleven59\BackpackShop\Http\Requests\CartRemoveRequest;
-use Eleven59\BackpackShop\Http\Requests\CartUpdateRequest;
-use Eleven59\BackpackShop\Models\Product;
+use mohamed7sameer\BackpackShop\Http\Requests\CartRemoveRequest;
+use mohamed7sameer\BackpackShop\Http\Requests\CartUpdateRequest;
+use mohamed7sameer\BackpackShop\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 

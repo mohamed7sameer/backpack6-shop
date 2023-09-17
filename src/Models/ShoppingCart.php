@@ -1,6 +1,6 @@
 <?php
 
-namespace Eleven59\BackpackShop\Models;
+namespace mohamed7sameer\BackpackShop\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use function PHPUnit\Framework\throwException;
@@ -31,7 +31,7 @@ class ShoppingCart extends Model
             session([
                 'e59bp-shopping-cart' => [
                     'products' => [],
-                    'shipping_country' => config('eleven59.backpack-shop.default_shipping_country', 'Netherlands'),
+                    'shipping_country' => config('mohamed7sameer.backpack-shop.default_shipping_country', 'Netherlands'),
                 ],
             ]);
         }
@@ -347,7 +347,7 @@ class ShoppingCart extends Model
      */
     public function getPaymentMethods()
     {
-        $classname = config('eleven59.backpack-shop.payment_provider', null);
+        $classname = config('mohamed7sameer.backpack-shop.payment_provider', null);
         $paymentProvider = new $classname();
         return $paymentProvider->getPaymentMethods();
     }

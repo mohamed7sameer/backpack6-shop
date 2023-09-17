@@ -3,11 +3,11 @@
 if(!function_exists('shoppingcart')) {
     /**
      * Global shoppingcart access
-     * @return \Eleven59\BackpackShop\Models\ShoppingCart
+     * @return \mohamed7sameer\BackpackShop\Models\ShoppingCart
      */
     function shoppingcart()
     {
-        return new \Eleven59\BackpackShop\Models\ShoppingCart();
+        return new \mohamed7sameer\BackpackShop\Models\ShoppingCart();
     }
 }
 
@@ -19,7 +19,7 @@ if (!function_exists('bpshop_show_column')) {
      * @return bool
      */
     function bpshop_show_column(string $model, string $column) :bool {
-        return !in_array($column, config("eleven59.backpack-shop.hide-{$model}-columns", []));
+        return !in_array($column, config("mohamed7sameer.backpack-shop.hide-{$model}-columns", []));
     }
 }
 
@@ -32,7 +32,7 @@ if (!function_exists('bpshop_mapped_countries')) {
         // Make sure we only report countries that actually exist
         $countries = [];
         $allCountries = \PragmaRX\Countries\Package\Countries::all()->pluck("name.common", "name.common")->toArray();
-        $regions = \Eleven59\BackpackShop\Models\ShippingRegion::all();
+        $regions = \mohamed7sameer\BackpackShop\Models\ShippingRegion::all();
         foreach ($regions as $region) {
             foreach ($region->countries as $country) {
                 if (isset($allCountries[$country])) {
@@ -67,7 +67,7 @@ if (!function_exists('bpshop_shipping_countries')) {
     function bpshop_shipping_countries() {
         $shipping_countries = [];
         $countries = \PragmaRX\Countries\Package\Countries::all()->pluck("name.common", "name.common")->toArray();
-        $regions = \Eleven59\BackpackShop\Models\ShippingRegion::has('shipping_rule')->get();
+        $regions = \mohamed7sameer\BackpackShop\Models\ShippingRegion::has('shipping_rule')->get();
         foreach ($regions as $region) {
             foreach ($region->countries as $country) {
                 if (isset($countries[$country])) {
@@ -87,7 +87,7 @@ if (!function_exists('bpshop_shipping_size_enabled')) {
      */
     function bpshop_shipping_size_enabled(): bool
     {
-        return in_array(strtolower(config('eleven59.backpack-shop.shipping-calculation', 'both')), ['both', 'size']);
+        return in_array(strtolower(config('mohamed7sameer.backpack-shop.shipping-calculation', 'both')), ['both', 'size']);
     }
 }
 
@@ -98,7 +98,7 @@ if (!function_exists('bpshop_shipping_weight_enabled')) {
      */
     function bpshop_shipping_weight_enabled(): bool
     {
-        return in_array(strtolower(config('eleven59.backpack-shop.shipping-calculation', 'both')), ['both', 'weight']);
+        return in_array(strtolower(config('mohamed7sameer.backpack-shop.shipping-calculation', 'both')), ['both', 'weight']);
     }
 }
 

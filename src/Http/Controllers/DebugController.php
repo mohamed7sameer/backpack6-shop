@@ -1,9 +1,9 @@
 <?php
 
-namespace Eleven59\BackpackShop\Http\Controllers;
+namespace mohamed7sameer\BackpackShop\Http\Controllers;
 
-use Eleven59\BackpackShop\Mail\Invoice;
-use Eleven59\BackpackShop\Models\Order;
+use mohamed7sameer\BackpackShop\Mail\Invoice;
+use mohamed7sameer\BackpackShop\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
@@ -65,7 +65,7 @@ class DebugController extends Controller
     public function email_html(Request $request, $order_id) :View
     {
         $order = Order::find($order_id);
-        return view(config('eleven59.backpack-shop.invoice-mail-view', 'eleven59.backpack-shop::email.invoice'), [
+        return view(config('mohamed7sameer.backpack-shop.invoice-mail-view', 'mohamed7sameer.backpack-shop::email.invoice'), [
             'order' => $order,
             'subject' => __('backpack-shop::invoice.mail.title', ['order_no' => $order->fancy_invoice_no]),
             'copy' => false,
