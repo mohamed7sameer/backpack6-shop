@@ -18,7 +18,8 @@
         "backpack/pro": "*",
         "barryvdh/laravel-dompdf": "^2.0",
         "illuminate/support": "~8|~9",
-        "mohamed7sameer/backpack-image-traits": "^1.0"
+        "mohamed7sameer/backpack-image-traits": "^1.0",
+        "mohamed7sameer/countries-laravel": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",
