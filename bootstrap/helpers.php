@@ -31,7 +31,7 @@ if (!function_exists('bpshop_mapped_countries')) {
     function bpshop_mapped_countries() :array {
         // Make sure we only report countries that actually exist
         $countries = [];
-        $allCountries = \PragmaRX\Countries\Package\Countries::all()->pluck("name.common", "name.common")->toArray();
+        $allCountries = \Mohamed7sameer\Countries\Package\Countries::all()->pluck("name.common", "name.common")->toArray();
         $regions = \mohamed7sameer\BackpackShop\Models\ShippingRegion::all();
         foreach ($regions as $region) {
             foreach ($region->countries as $country) {
@@ -66,7 +66,7 @@ if (!function_exists('bpshop_shipping_countries')) {
      */
     function bpshop_shipping_countries() {
         $shipping_countries = [];
-        $countries = \PragmaRX\Countries\Package\Countries::all()->pluck("name.common", "name.common")->toArray();
+        $countries = \Mohamed7sameer\Countries\Package\Countries::all()->pluck("name.common", "name.common")->toArray();
         $regions = \mohamed7sameer\BackpackShop\Models\ShippingRegion::has('shipping_rule')->get();
         foreach ($regions as $region) {
             foreach ($region->countries as $country) {

@@ -31,7 +31,7 @@ class ShippingRegion extends Model
     */
 
     /**
-     * Look up the right shipping region for the country provided (using name.common from PragmaRX/Countries)
+     * Look up the right shipping region for the country provided (using name.common from Mohamed7sameer/Countries)
      * If multiple regions match, the first one is used; it's up to the user to not double-assign countries
      * @param string $countryCommonName
      * @return bool|ShippingRegion
