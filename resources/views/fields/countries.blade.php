@@ -1,7 +1,9 @@
 {{-- checklist --}}
 @php
     $field['number_of_columns'] = $field['number_of_columns'] ?? 2;
-    $field['options'] = \Mohamed7sameer\Countries\Package\Countries::all()->sortBy('name.common')->pluck('name.common', 'name.common');
+    // $field['options'] = \Mohamed7sameer\Countries\Package\Countries::all()->sortBy('name.common')->pluck('name.common', 'name.common');
+    $field['options'] = Symfony\Component\Intl\Countries::getNames();
+;
 
     // calculate the value of the hidden input
     $field['value'] = old_empty_or_null($field['name'], []) ??  $field['value'] ?? $field['default'] ?? [];
