@@ -17,7 +17,12 @@ class ShippingRegionCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CloneOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\BulkCloneOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -63,9 +68,37 @@ class ShippingRegionCrudController extends CrudController
             ->label(__('backpack-shop::shipping-region.crud.name.label'))
             ->hint(__('backpack-shop::shipping-region.crud.name.hint'));
 
-        CRUD::field('countries')
-            ->type('countries')
-            ->label(__('backpack-shop::shipping-region.crud.countries.label'));
+        // CRUD::field('countries')
+        //     ->type('countries')
+        //     ->label(__('backpack-shop::shipping-region.crud.countries.label'));
+
+        CRUD::field([   // select_from_array
+            'name'        => 'countries',
+            'label'       => "countries",
+            'type'        => 'select_from_array',
+            // 'options'     => ['one' => 'One', 'two' => 'Two', 'three' => 'Three'],
+            'options'     => \Symfony\Component\Intl\Countries::getNames(),
+
+            'allows_null' => true,
+            // 'default'     => 'one',
+            'allows_multiple' => true, // OPTIONAL; needs you to cast this to array in your model;
+        ]);
+
+        CRUD::field([   // CustomHTML
+            'name'  => 'custom',
+            'type'  => 'custom_html',
+            'value' => '
+
+            <style>
+                select[name="countries[]"]{
+                    height: 80vh;
+                }
+            </style>
+
+            '
+        ]);
+
+
     }
 
     /**

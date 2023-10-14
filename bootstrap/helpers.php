@@ -32,26 +32,11 @@ if (!function_exists('bpshop_mapped_countries')) {
         // Make sure we only report countries that actually exist
         $countries = [];
         // $allCountries = \Mohamed7sameer\Countries\Package\Countries::all()->pluck("name.common", "name.common")->toArray();
-        $allCountries = Countries::getNames();
+        $allCountries = Symfony\Component\Intl\Countries::getNames();
 
-        // $regions = \mohamed7sameer\BackpackShop\Models\ShippingRegion::all();
+        $regions = \mohamed7sameer\BackpackShop\Models\ShippingRegion::all();
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-          CURLOPT_URL => 'https://countriesnow.space/api/v0.1/countries/states',
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_ENCODING => '',
-          CURLOPT_MAXREDIRS => 10,
-          CURLOPT_TIMEOUT => 0,
-          CURLOPT_FOLLOWLOCATION => true,
-          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => 'GET',
-        ));
-        $regionsD = curl_exec($curl);
-        curl_close($curl);
-        // $regions = $regionsD['data'];
 
-        $regions = [];
 
 
 
