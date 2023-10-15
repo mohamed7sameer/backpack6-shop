@@ -3,7 +3,8 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This packages adds customizable models, CRUD panels, and order functionality for building a webshop with [Backpack for Laravel](https://backpackforlaravel.com). 
+تضيف هذه الحزم نماذج قابلة للتخصيص ولوحات CRUD ووظائف الطلب لإنشاء متجر ويب باستخدامها
+ [Backpack for Laravel](https://backpackforlaravel.com). 
 
 Functionality:
 - Create product categories and products
