@@ -10,6 +10,9 @@
  * Payment result
  * Outside of the 'shopping-cart' prefix because this is the only URL that is shown publicly to the customer
  */
+
+use mohamed7sameer\BackpackShop\Http\Controllers\BackpackShop;
+
  Route::group([
      'middleware'=> array_merge(
      	(array) config('backpack.base.web_middleware', 'web'),
@@ -73,5 +76,22 @@ Route::group([
         Route::get('/pdf-html/{order_id}', [\mohamed7sameer\BackpackShop\Http\Controllers\DebugController::class, 'pdf_html']);
         Route::get('/email/{order_id}', [\mohamed7sameer\BackpackShop\Http\Controllers\DebugController::class, 'email']);
         Route::get('/email-html/{order_id}', [\mohamed7sameer\BackpackShop\Http\Controllers\DebugController::class, 'email_html']);
+    }
+});
+
+
+Route::group([
+    'prefix' => 'backpack-shop',
+],function(){
+    if(env('APP_DEBUG')) {
+        Route::get('categories',[\mohamed7sameer\BackpackShop\Http\Controllers\BackpackShop::class,'categoriesIndex']);
+        Route::get('categories/{slug}',[\mohamed7sameer\BackpackShop\Http\Controllers\BackpackShop::class,'categoriesShow'])->name('bs-category-show');
+
+        Route::get('products',[\mohamed7sameer\BackpackShop\Http\Controllers\BackpackShop::class,'productsIndex'])->name('bs-products-index');
+        Route::get('products/{slug}',[\mohamed7sameer\BackpackShop\Http\Controllers\BackpackShop::class,'productsShow'])->name('bs-product-show');
+
+        // Route::get('test',function(){
+
+        // })
     }
 });

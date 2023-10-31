@@ -18,7 +18,12 @@
         "backpack/pro": "*",
         "barryvdh/laravel-dompdf": "^2.0",
         "illuminate/support": "*",
-        "mohamed7sameer/backpack-image-traits": "*"
+        "mohamed7sameer/backpack-image-traits": "*",
+        "cviebrock/eloquent-sluggable" : "*",
+        "symfony/intl": "*",
+
+        "intervention/image": "*"
+
     },
     "require-dev": {
         "phpunit/phpunit": "*",

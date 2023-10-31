@@ -30,6 +30,7 @@ class ProductCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      *
@@ -103,7 +104,7 @@ class ProductCrudController extends CrudController
 
         CRUD::field('slug')
             ->tab(__('backpack-shop::product.crud.tabs.info'))
-            ->type('slug')
+            ->type('text')
             ->target('name')
             ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product.crud.slug.label'))
@@ -118,22 +119,31 @@ class ProductCrudController extends CrudController
 
         CRUD::field('product_categories')
             ->tab(__('backpack-shop::product.crud.tabs.info'))
-            ->type('select2_multiple')
+            // ->type('select2_multiple')
+            ->type('relationship')
             ->wrapper(['class' => 'form-group col-md-6'])
             ->label(__('backpack-shop::product.crud.product_categories.label'))
             ->entity('product_categories')
-            ->attribute('name')
+            ->attribute('c_name')
             ->model(ProductCategory::class)
-            ->pivot(true);
+            ->pivot(true)
+            // ->ajax(true)
+
+            ->inline_create([ 'entity' => 'product-category' ])
+            ;
 
         CRUD::field('product_status_id')
             ->tab(__('backpack-shop::product.crud.tabs.info'))
-            ->type('select2')
+            // ->type('select2')
+            ->type('relationship')
+
             ->wrapper(['class' => 'form-group col-md-6'])
             ->label(__('backpack-shop::product.crud.product_status_id.label'))
             ->entity('product_status')
             ->attribute('status')
-            ->model(ProductStatus::class);
+            ->model(ProductStatus::class)
+            ->inline_create(true)
+            ;
 
         if(bpshop_show_column('product', 'description')) {
             CRUD::field('description')
@@ -151,10 +161,16 @@ class ProductCrudController extends CrudController
                 ->subfields([
                     [
                         'name' => 'property_id',
-                        'type' => 'select2_from_array',
+                        // 'type' => 'select2_from_array',
+                        'type' => 'relationship',
                         'wrapper' => ['class' => 'form-group col-md-6'],
                         'label' => __('backpack-shop::product.crud.properties.property_id.label'),
-                        'options' => ProductProperty::orderBy('title')->pluck('title', 'id'),
+                        // 'options' => ProductProperty::orderBy('title')->pluck('title', 'id'),
+
+                        'entity' => 'product_property',
+                        'attribute' => 'title',
+                        'model' => ProductProperty::class,
+                        'inline_create' => true,
                     ],
                     [
                         'name' => 'value',
@@ -174,8 +190,17 @@ class ProductCrudController extends CrudController
                 ->label(__('backpack-shop::product.crud.cover.label'))
                 ->aspect_ratio(config('mohamed7sameer.backpack-shop.product-cover.aspect-ratio', 0))
                 ->crop(config('mohamed7sameer.backpack-shop.product-cover.crop', true))
-                ->disk(config('mohamed7sameer.backpack-shop.product-cover.disk', null))
-                ->prefix(config('mohamed7sameer.backpack-shop.product-cover.prefix', null));
+                // ->disk(config('mohamed7sameer.backpack-shop.product-cover.disk', null))
+                ->prefix(config('mohamed7sameer.backpack-shop.product-cover.prefix', null))
+                ->withFiles([
+                    'disk' => config('mohamed7sameer.backpack-shop.product-cover.disk', null),
+                    'path' => '/product/cover',
+                    'deleteWhenEntryIsDeleted' => true,
+                    'temporaryUrl' => false,
+                    'temporaryUrlExpirationTime' => 1,
+                    'uploader' => null,
+                    'fileNamer' => null
+                ]);
         }
 
         if(bpshop_show_column('product', 'photos')) {
@@ -193,6 +218,7 @@ class ProductCrudController extends CrudController
                         'crop' => config('mohamed7sameer.backpack-shop.product-photos.crop', true),
                         'disk' => config('mohamed7sameer.backpack-shop.product-photos.disk', null),
                         'prefix' => config('mohamed7sameer.backpack-shop.product-photos.prefix', null),
+
                     ],
                     [
                         'hint' => __('backpack-shop::product.crud.photos.description.hint'),
@@ -201,6 +227,7 @@ class ProductCrudController extends CrudController
                         'label' => __('backpack-shop::product.crud.photos.description.label'),
                     ],
                 ])
+
                 ->reorder(true)
                 ->new_item_label(__('backpack-shop::product.crud.photos.new_item_label'));
         }
@@ -231,11 +258,13 @@ class ProductCrudController extends CrudController
 
         CRUD::field('vat_class_id')
             ->tab(__('backpack-shop::product.crud.tabs.sales'))
-            ->type('select2')
+            // ->type('select2')
+            ->type('relationship')
             ->label(__('backpack-shop::product.crud.vat_class_id.label'))
             ->entity('vat_class')
             ->attribute('name')
-            ->model(VatClass::class);
+            ->model(VatClass::class)
+            ->inline_create(true);
 
         if(bpshop_shipping_size_enabled()) {
             CRUD::field('shipping_sizes')
@@ -246,10 +275,17 @@ class ProductCrudController extends CrudController
                 ->subfields([
                     [
                         'name' => 'shipping_size_id',
-                        'type' => 'select2_from_array',
+                        // 'type' => 'select2_from_array',
+                        'type' => 'relationship',
                         'wrapper' => ['class' => 'form-group col-md-6'],
                         'label' => __('backpack-shop::product.crud.shipping_sizes.shipping_size_id.label'),
-                        'options' => ShippingSize::orderBy('lft')->pluck('name', 'id'),
+                        // 'options' => ShippingSize::orderBy('lft')->pluck('name', 'id'),
+
+                        'entity' => 'shipping_size',
+                        'attribute' => 'name',
+                        'model' => ShippingSize::class,
+                        'inline_create' => true,
+
                     ],
                     [
                         'name' => 'max_product_count',
@@ -362,8 +398,17 @@ class ProductCrudController extends CrudController
                 ->hint(__('backpack-shop::product.crud.meta-image.hint'))
                 ->aspect_ratio(config('mohamed7sameer.backpack-shop.category-meta-image.aspect-ratio', 1.91))
                 ->crop(config('mohamed7sameer.backpack-shop.category-meta-image.crop', true))
-                ->disk(config('mohamed7sameer.backpack-shop.category-meta-image.disk', null))
-                ->prefix(config('mohamed7sameer.backpack-shop.category-meta-image.prefix', null));
+                // ->disk(config('mohamed7sameer.backpack-shop.category-meta-image.disk', null))
+                ->prefix(config('mohamed7sameer.backpack-shop.category-meta-image.prefix', null))
+                ->withFiles([
+                    'disk' => config('mohamed7sameer.backpack-shop.category-meta-image.disk', null),
+                    'path' => '/product/meta-image',
+                    'deleteWhenEntryIsDeleted' => true,
+                    'temporaryUrl' => false,
+                    'temporaryUrlExpirationTime' => 1,
+                    'uploader' => null,
+                    'fileNamer' => null
+                ]);
         }
 
         if(!empty(config('mohamed7sameer.backpack-shop.product_extras', []))) {
@@ -404,5 +449,47 @@ class ProductCrudController extends CrudController
     {
         CRUD::set('reorder.label', 'name');
         CRUD::set('reorder.max_level', 1);
+    }
+
+    public function fetchProductCategories()
+    {
+
+
+        // return $this->fetch(ProductCategory::class);
+
+        return $this->fetch([
+            'model' => ProductCategory::class,
+            'query' => function($model) {
+                return $model->orderBy('lft');
+            } // to filter the results that are returned
+        ]);
+
+    }
+    public function fetchProductStatus()
+    {
+        return $this->fetch(ProductStatus::class);
+    }
+    public function fetchProductProperty()
+    {
+        return $this->fetch(ProductProperty::class);
+    }
+    public function fetchVatClass()
+    {
+        return $this->fetch(VatClass::class);
+    }
+    public function fetchshippingSize()
+    {
+        // return $this->fetch(ShippingSize::class)
+        // ->query(
+        //     function($model) {
+        //         return $model->orderBy('lft');
+        //     }
+        // );
+        return $this->fetch([
+            'model' => ShippingSize::class, // required
+            'query' => function($model) {
+                return $model->orderBy('lft');
+            } // to filter the results that are returned
+        ]);
     }
 }

@@ -28,7 +28,7 @@ class ProductStatusRequest extends FormRequest
     {
         return [
             'status' => 'required|min:3|max:255',
-            'slug' => 'required_with:status|min:3|max:255',
+            // 'slug' => 'required_with:status|min:3|max:255',
         ];
     }
 
@@ -52,7 +52,7 @@ class ProductStatusRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->slug),
+            // 'slug' => Str::slug($this->slug),
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace mohamed7sameer\BackpackShop\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use mohamed7sameer\BackpackShop\Http\Requests\VatClassRequest;
+
 use function config;
 
 /**
@@ -23,6 +24,7 @@ class VatClassCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
 
 
 

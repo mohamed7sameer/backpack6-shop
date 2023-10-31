@@ -6,7 +6,7 @@ return [
      * CRUD
      */
     'crud' => [
-        'singular' => 'product category',
+        'singular' => 'product-category',
         'plural' => 'product categories',
         'tabs' => [
             'info' => 'Information',

@@ -24,6 +24,7 @@ class ProductPropertyCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -70,7 +71,7 @@ class ProductPropertyCrudController extends CrudController
             ->label(__('backpack-shop::product-property.crud.title.label'));
 
         CRUD::field('slug')
-            ->type('slug')
+            ->type('text')
             ->target('title')
             ->wrapper(['class' => (config('mohamed7sameer.backpack-shop.hide-slugs', true) ? 'd-none' : 'form-group col-md-6')])
             ->label(__('backpack-shop::product-property.crud.slug.label'))

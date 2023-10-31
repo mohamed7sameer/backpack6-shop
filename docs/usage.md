@@ -1,3 +1,24 @@
+<div dir="rtl">
+
+يشير ال price في التجارة الإلكترونية إلى السعر الذي يتم عرضه للمنتج على الموقع. 
+بينما يشير ال sale price إلى السعر الذي يتم بيع المنتج به بعد تخفيضه. 
+يتم استخدام ال sale price عادةً لزيادة المبيعات والترويج للمنتجات.
+ومن الممكن أن يكون هناك تخفيضات مؤقتة في الأسعار لزيادة المبيعات،
+وهذا ما يشير إليه ال sale price
+أما بالنسبة ل price، فهو يشير إلى السعر الأصلي للمنتج قبل تخفيضه. 
+وغالبًا ما يستخدم ال price في الترويج للمنتجات والإشارة إلى قيمة المنتج
+
+<hr>
+
+يشير “Product Properties” في التجارة الإلكترونية إلى الخصائص المختلفة للمنتجات، مثل الأبعاد والوزن والمواد المستخدمة في صنع المنتج. بينما يشير “Product Variations” إلى الإصدارات المختلفة من نفس المنتج، مثل الأحجام والألوان والأشكال. يمكن للعميل اختيار إحدى الإصدارات المختلفة لشراء المنتج.
+
+عادةً ما يتم استخدام “Product Properties” لوصف المنتج بشكل أفضل، بينما يستخدم “Product Variations” لعرض الإصدارات المختلفة من نفس المنتج. يمكن أيضًا استخدام “Product Variations” لعرض تخفيضات مؤقتة في الأسعار.
+
+
+
+</div>
+
+
 # Usage
 
 This markdown file describes how to use this package to easily build a highly customizable shop frontend with shopping cart and checkout functionality using [Backpack for Laravel](https://backpackforlaravel.com).

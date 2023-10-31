@@ -28,7 +28,7 @@ class ProductCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
-            'slug' => 'required_with:name|min:3|max:255',
+            // 'slug' => 'required_with:name|min:3|max:255',
         ];
     }
 
@@ -43,16 +43,16 @@ class ProductCategoryRequest extends FormRequest
             'name.required' => __('backpack-shop::product-category.request.name.required'),
             'name.min' => __('backpack-shop::product-category.request.name.min'),
             'name.max' => __('backpack-shop::product-category.request.name.max'),
-            'slug.required_with' => __('backpack-shop::product-category.request.slug.required_with'),
-            'slug.min' => __('backpack-shop::product-category.request.slug.min'),
-            'slug.max' => __('backpack-shop::product-category.request.slug.max'),
+            // 'slug.required_with' => __('backpack-shop::product-category.request.slug.required_with'),
+            // 'slug.min' => __('backpack-shop::product-category.request.slug.min'),
+            // 'slug.max' => __('backpack-shop::product-category.request.slug.max'),
         ];
     }
 
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->slug),
+            // 'slug' => Str::slug($this->slug),
         ]);
     }
 }

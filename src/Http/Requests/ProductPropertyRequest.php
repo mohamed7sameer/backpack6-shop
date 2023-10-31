@@ -28,7 +28,7 @@ class ProductPropertyRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'slug' => 'required_with:name|max:255',
+            // 'slug' => 'required_with:name|max:255',
         ];
     }
 
@@ -50,7 +50,7 @@ class ProductPropertyRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->slug),
+            // 'slug' => Str::slug($this->slug),
         ]);
     }
 }

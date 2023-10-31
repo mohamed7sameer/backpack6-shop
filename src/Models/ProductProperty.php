@@ -6,11 +6,13 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
+use mohamed7sameer\BackpackShop\Casts\SlugTitle;
 
 class ProductProperty extends Model
 {
     use CrudTrait, HasFactory, SoftDeletes;
-
+    use Sluggable;
     /*
     |--------------------------------------------------------------------------
     | GLOBAL VARIABLES
@@ -19,7 +21,9 @@ class ProductProperty extends Model
 
     protected $table = 'product_properties';
     protected $guarded = ['id', 'parent_id', 'lft', 'rgt', 'depth', 'deleted_at', 'created_at', 'updated_at'];
-
+    protected $casts = [
+        'slug' => SlugTitle::class,
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +31,14 @@ class ProductProperty extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     /*
     |--------------------------------------------------------------------------

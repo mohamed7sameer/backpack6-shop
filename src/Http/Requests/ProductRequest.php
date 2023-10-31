@@ -30,7 +30,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:255',
-            'slug' => 'required_with:name|min:5|max:255',
+            // 'slug' => 'required_with:name|min:5|max:255',
             'product_status_id' => 'required|exists:product_statuses,id',
             'price' => 'required',
             'vat_class_id' => 'required|exists:vat_classes,id',
@@ -85,7 +85,7 @@ class ProductRequest extends FormRequest
         }
 
         $this->merge([
-            'slug' => Str::slug($this->slug),
+            // 'slug' => Str::slug($this->slug),
         ]);
     }
 }

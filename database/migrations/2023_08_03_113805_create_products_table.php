@@ -17,8 +17,12 @@ class CreateProductsTable extends Migration
             $table->string('name')->nullable();
             $table->string('slug')->nullable()->index();
             $table->string('sku')->nullable();
-            $table->integer('product_category_id')->unsigned()->nullable();
-            $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('set null');
+
+            // $table->integer('product_category_id')->unsigned()->nullable();
+            // $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('set null');
+            // will remove product_category_id
+
+
             $table->integer('product_status_id')->unsigned()->nullable();
             $table->foreign('product_status_id')->references('id')->on('product_statuses')->onDelete('set null');
             $table->text('description')->nullable();

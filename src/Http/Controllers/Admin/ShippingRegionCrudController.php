@@ -23,7 +23,7 @@ class ShippingRegionCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
-
+    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      *
