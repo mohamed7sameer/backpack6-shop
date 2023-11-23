@@ -1,59 +1,44 @@
 <div dir="rtl">
 
-يشير ال price في التجارة الإلكترونية إلى السعر الذي يتم عرضه للمنتج على الموقع. 
-بينما يشير ال sale price إلى السعر الذي يتم بيع المنتج به بعد تخفيضه. 
-يتم استخدام ال sale price عادةً لزيادة المبيعات والترويج للمنتجات.
-ومن الممكن أن يكون هناك تخفيضات مؤقتة في الأسعار لزيادة المبيعات،
-وهذا ما يشير إليه ال sale price
-أما بالنسبة ل price، فهو يشير إلى السعر الأصلي للمنتج قبل تخفيضه. 
-وغالبًا ما يستخدم ال price في الترويج للمنتجات والإشارة إلى قيمة المنتج
-
-<hr>
-
-يشير “Product Properties” في التجارة الإلكترونية إلى الخصائص المختلفة للمنتجات، مثل الأبعاد والوزن والمواد المستخدمة في صنع المنتج. بينما يشير “Product Variations” إلى الإصدارات المختلفة من نفس المنتج، مثل الأحجام والألوان والأشكال. يمكن للعميل اختيار إحدى الإصدارات المختلفة لشراء المنتج.
-
-عادةً ما يتم استخدام “Product Properties” لوصف المنتج بشكل أفضل، بينما يستخدم “Product Variations” لعرض الإصدارات المختلفة من نفس المنتج. يمكن أيضًا استخدام “Product Variations” لعرض تخفيضات مؤقتة في الأسعار.
 
 
 
-</div>
+# الاستخدام
 
+يوضح هذا الملف بتنسيق Markdown كيفية استخدام هذه الحزمة لبناء واجهة مستخدم لمتجر قابلة للتخصيص بشكل كبير مع واجهة سلة التسوق ووظيفة الدفع باستخدام [Backpack for Laravel](https://backpackforlaravel.com).
 
-# Usage
+## المحتويات:
 
-This markdown file describes how to use this package to easily build a highly customizable shop frontend with shopping cart and checkout functionality using [Backpack for Laravel](https://backpackforlaravel.com).
-
-## Contents:
-
-- [1. Showing categories and products](./usage.md#1-showing-categories-and-products)
-- [2. Using the shopping cart](./usage.md#2-using-the-shopping-cart)
-- [3. Checkout and payment](./usage.md#3-checkout-and-payment)
-- [4. Additional configuration](./usage.md#4-additional-configuration)
+- [1. عرض الفئات والمنتجات](./usage.md#1-showing-categories-and-products)
+- [2. استخدام سلة التسوق](./usage.md#2-using-the-shopping-cart)
+- [3. عملية الدفع والسداد](./usage.md#3-checkout-and-payment)
+- [4. تكوين إضافي](./usage.md#4-additional-configuration)
 
 &nbsp;
 
 ---
 
-## 1. Showing categories and products
+## 1. عرض الفئات والمنتجات
 
-Quick nav:
+روابط سريعة:
 
-- [1.1 Categories](./usage.md#11-categories)
-- [1.2 Products](./usage.md#12-products)
-- [1.3 Product properties](./usage.md#13-product-properties)
-- [1.4 Product variations](./usage.md#14-product-variations)
+- [1.1 الفئات](./usage.md#11-categories)
+- [1.2 المنتجات](./usage.md#12-products)
+- [1.3 خصائص المنتج](./usage.md#13-product-properties)
+- [1.4 تغييرات المنتج](./usage.md#14-product-variations)
 
 &nbsp;
 
-### 1.1 Categories
+### 1.1 الفئات
 
-Just use the `mohamed7sameer\BackpackShop\Models\ProductCategory` model like you would any other CRUD model. For example:
+ما عليك سوى استخدام نموذج `mohamed7sameer\BackpackShop\Models\ProductCategory` كما تفعل مع أي نموذج CRUD آخر. على سبيل المثال:
+
 
 ```php
 $categories = ProductCategory::has('products')->orderBy('name')->get();
 ```
 
-and in your template:
+وفي القالب الخاص بك:
 
 ```injectablephp
 <ul class="category-menu">
@@ -62,14 +47,17 @@ and in your template:
     @endforeach
 <ul>
 ```
-
-See `product_categories` table or CRUD for the available field names here.
+راجع جدول `product_categories` أو CRUD للحصول على أسماء الحقول المتاحة هنا.
 
 &nbsp;
 
-### 1.2 Products
+### 1.2 المنتجات
 
-Get all products in a category using `$category->products` or use the `mohamed7sameer\BackpackShop\Models\Product` model like you would any other CRUD model. For example:
+احصل على جميع المنتجات في فئة معينة باستخدام `$category->products` أو استخدم نموذج `mohamed7sameer\BackpackShop\Models\Product` كأي نموذج CRUD آخر. على سبيل المثال:
+
+
+
+
 
 ```php
 // Category products
@@ -80,7 +68,7 @@ $products = $category->products;
 $products = Product::orderBy('price', 'asc')->get();
 ```
 
-and in your template:
+وفي القالب الخاص بك:
 
 ```html
 @forelse($category->products as $product)
@@ -99,15 +87,19 @@ and in your template:
 @endforelse
 ```
 
-See `products` table or CRUD for the available field names here, or add extra fields using the config file, or additional properties using the product properties CRUD (see 1.3 below).
+انظر إلى جدول `products` أو CRUD للحصول على أسماء الحقول المتاحة هنا، أو أضف حقول إضافية باستخدام ملف التكوين، أو خصائص إضافية باستخدام CRUD لخصائص المنتج (انظر 1.3 أدناه).
 
 &nbsp;
 
-### 1.3 Product properties
+### 1.3 خصائص المنتج
 
-This is pretty easy as well. Go to the `Product properties` CRUD panel and add a couple. Then edit or add a product on the `Products` CRUD panel, available at the end of the `Info` tab.
+هذا أمر سهل أيضًا. انتقل إلى لوحة التحكم لـ `خصائص المنتج` وأضف بعضًا. ثم قم بتحرير أو إضافة منتج على لوحة تحكم `المنتجات`، المتاحة في نهاية علامة التبويب `المعلومات`.
 
-Display on the frontend using:
+عرضها على الواجهة الأمامية باستخدام:
+
+
+
+
 
 ```html
 @foreach($product->properties as $property)
@@ -116,38 +108,47 @@ Display on the frontend using:
 @endforeach
 ```
 
-That's it!
+
+
+هذا هو!
 
 &nbsp;
 
-### 1.4 Product variations
+### 1.4 تفاصيل المنتجات
 
-Out of the box, this package provides the option to use product variations instead. These are versions of a product, which you can use for customers to order a specific type, but do not want to add as separate products.
+بشكل افتراضي، يوفر هذا الحزمة الخيار لاستخدام تفاصيل المنتج بدلاً من ذلك. تلك هي إصدارات للمنتج، يمكنك استخدامها لطلب نوع معين، ولكنك لا تريد إضافتها كمنتجات منفصلة.
 
-Variations are accessible through the `$product->variations` property, and can have a different cover and price (but that's it). Think for example of selling a vinyl record in two colors, and making the color version a bit more expensive. That kind of stuff. See using the shopping cart for dealing with all that.
+يمكن الوصول إلى التفاصيل من خلال خاصية `$product->variations`، ويمكن أن تكون لديها غلاف وسعر مختلفين (لكن هذا هو كل شيء). فكر، على سبيل المثال، في بيع سجل فينيل بلونين، وجعل نسخة اللون أغلى قليلاً. هذا النوع من الأمور. انظر إلى استخدام عربة التسوق للتعامل مع كل ذلك.
 
-You may prefer just using single products, but this is here, too, if you need it.
+قد تفضل فقط استخدام منتجات فردية، ولكن هذا هو هنا، أيضًا، إذا كنت بحاجة إليه.
 
 &nbsp;
 
 ---
 
-## 2. Using the shopping cart
+## 2. استخدام عربة التسوق
 
-Quick nav:
+التنقل السريع:
 
-- [2.1 API: Add product](./usage.md#21-api-add-product)
-- [2.2 API: Update product](./usage.md#22-api-update-product)
-- [2.3 API: Remove product](./usage.md#23-api-remove-product)
-- [2.4 Display contents](./usage.md#24-display-shopping-cart-contents)
+- [2.1 API: إضافة منتج](./usage.md#21-api-add-product)
+- [2.2 API: تحديث المنتج](./usage.md#22-api-update-product)
+- [2.3 API: إزالة المنتج](./usage.md#23-api-remove-product)
+- [2.4 عرض المحتويات](./usage.md#24-display-shopping-cart-contents)
 
 &nbsp;
 
-### 2.1 API: Add product
+### 2.1 API: إضافة منتج
 
-> Using the AJAX controller
+> باستخدام وحدة تحكم AJAX
 
-This package automatically provides a route you can use to ajax-add a product to the shopping cart. Just call `/shopping-cart/add-product` with the following params:
+توفر هذه الحزمة تلقائيًا مسار يمكنك استخدامه لإضافة منتج إلى عربة التسوق باستخدام AJAX. ما عليك سوى استدعاء `/shopping-cart/add-product` بالمعلمات التالية:
+
+
+
+
+
+
+
 
 ```javascript
 data = {
@@ -157,7 +158,7 @@ data = {
 }
 ```
 
-The ajax call will return the following:
+ستعيد مكالمة ajax ما يلي:
 
 ```javascript
 result = {
@@ -167,23 +168,27 @@ result = {
 }
 ```
 
-The `product_count` variable is provided so you can update the cart product counter if you are using that somewhere in your templates.
 
-> Using the shoppingcart() helper
+يتم توفير متغير `product_count` حتى تتمكن من تحديث عداد المنتجات في عربة التسوق إذا كنت تستخدم ذلك في أي مكان في قوالبك.
 
-If you need do all of the above yourself for whatever reason, you can use the `shoppingcart()->addItem(Product $product, int $quantity = 1, array $variation = [])` function.
+> باستخدام مساعد shoppingcart()
 
-- `$product` needs to be an instance of `mohamed7sameer\BackpackShop\Models\Product`
-- `$quantity` needs to be a positive integer
-- `$variation` needs to be empty, or an array containing at least the `'id'` property of the variation you want to add
+إذا كنت بحاجة إلى القيام بكل ذلك بنفسك لأي سبب من الأسباب، يمكنك استخدام وظيفة `shoppingcart()->addItem(Product $product, int $quantity = 1, array $variation = [])`.
+
+- `$product` يجب أن يكون مثيلًا لـ `mohamed7sameer\BackpackShop\Models\Product`
+- `$quantity` يجب أن يكون عددًا صحيحًا إيجابيًا
+- `$variation` يجب أن يكون فارغًا أو مصفوفة تحتوي على الأقل على خاصية `'id'` للتفاصيل التي تريد إضافتها
 
 &nbsp;
 
-### 2.2 API: Update product
+### 2.2 API: تحديث المنتج
 
-> Using the AJAX controller
+> باستخدام وحدة التحكم AJAX
 
-This package automatically provides a route you can use to ajax-update the shopping cart. Just call `/shopping-cart/update-product` with the following params:
+توفر هذه الحزمة تلقائيًا مسار يمكنك استخدامه لتحديث عربة التسوق باستخدام AJAX. ما عليك سوى استدعاء `/shopping-cart/update-product` بالمعلمات التالية:
+
+
+
 
 ```javascript
 data = {
@@ -193,7 +198,7 @@ data = {
 }
 ```
 
-The ajax call will return the following:
+ستعيد مكالمة ajax ما يلي:
 
 ```javascript
 result = {
@@ -203,23 +208,34 @@ result = {
 }
 ```
 
-The `product_count` variable is again provided so you can update the cart product counter if you are using that somewhere in your templates.
 
-> Using the shoppingcart() helper
 
-If you need do all of the above yourself for whatever reason, you can use the `shoppingcart()->updateQuantity(Product $product, int $quantity = 1, array $variation = [])` function.
+يتم توفير المتغير `product_count` مرة أخرى حتى تتمكن من تحديث عداد المنتجات في عربة التسوق إذا كنت تستخدم ذلك في أي مكان في قوالبك.
 
-- `$product` needs to be an instance of `mohamed7sameer\BackpackShop\Models\Product`
-- `$quantity` needs to be a positive integer
-- `$variation` needs to be empty, or an array containing at least the `'id'` property of the variation you want to update
+> باستخدام مساعد shoppingcart()
+
+إذا كنت بحاجة إلى القيام بكل ذلك بنفسك لأي سبب من الأسباب، يمكنك استخدام وظيفة `shoppingcart()->updateQuantity(Product $product, int $quantity = 1, array $variation = [])`.
+
+- `$product` يجب أن يكون مثيلًا لـ `mohamed7sameer\BackpackShop\Models\Product`
+- `$quantity` يجب أن يكون عددًا صحيحًا إيجابيًا
+- `$variation` يجب أن يكون فارغًا أو مصفوفة تحتوي على الأقل على خاصية `'id'` للتفاصيل التي تريد تحديثها
 
 &nbsp;
 
-### 2.3 API: Remove product
+### 2.3 API: إزالة المنتج
 
-> Using the AJAX controller
+> باستخدام وحدة التحكم AJAX
 
-This package automatically provides a route you can use to ajax-update the shopping cart. Just call `/shopping-cart/remove-product` with the following params:
+توفر هذه الحزمة تلقائيًا مسار يمكنك استخدامه لتحديث عربة التسوق باستخدام AJAX. ما عليك سوى استدعاء `/shopping-cart/remove-product` بالمعلمات التالية:
+
+
+
+
+
+
+
+
+
 
 ```javascript
 data = {
@@ -228,7 +244,7 @@ data = {
 }
 ```
 
-The ajax call will return the following:
+ستعيد مكالمة ajax ما يلي:
 
 ```javascript
 result = {
@@ -238,32 +254,43 @@ result = {
 }
 ```
 
-The `product_count` variable is again provided so you can update the cart product counter if you are using that somewhere in your templates.
 
-> Using the shoppingcart() helper
 
-If you need do all of the above yourself for whatever reason, you can use the `shoppingcart()->removeItem(Product $product, array $variation = [])` function.
+يتم توفير المتغير `product_count` مرة أخرى حتى تتمكن من تحديث عداد المنتجات في عربة التسوق إذا كنت تستخدم ذلك في أي مكان في قوالبك.
 
-- `$product` needs to be an instance of `mohamed7sameer\BackpackShop\Models\Product`
-- `$variation` needs to be empty, or an array containing at least the `'id'` property of the variation you want to remove
+> باستخدام مساعد shoppingcart()
 
-&nbsp;
+إذا كنت بحاجة إلى القيام بكل ذلك بنفسك لأي سبب من الأسباب، يمكنك استخدام وظيفة `shoppingcart()->removeItem(Product $product, array $variation = [])`.
 
-### 2.4 Display shopping cart contents
-
-The `shoppingcart()` helper provides some tools to show the cart contents.
+- `$product` يجب أن يكون مثيلًا لـ `mohamed7sameer\BackpackShop\Models\Product`
+- `$variation` يجب أن يكون فارغًا أو مصفوفة تحتوي على الأقل على خاصية `'id'` للتفاصيل التي تريد إزالتها
 
 &nbsp;
 
-#### Number of products
+### 2.4 عرض محتويات عربة التسوق
 
-The `shoppingcart()->product_count` variable can be used to display how many products are currently in the shopping cart.
+يوفر مساعد `shoppingcart()` بعض الأدوات لعرض محتويات العربة التسوق.
 
 &nbsp;
 
-#### Products
+#### عدد المنتجات
 
-Using `shoppingcart()->products`, you can display the products in the cart:
+يمكن استخدام المتغير `shoppingcart()->product_count` لعرض عدد المنتجات التي توجد حاليًا في عربة التسوق.
+
+&nbsp;
+
+#### المنتجات
+
+من خلال `shoppingcart()->products`، يمكنك عرض المنتجات في العربة:
+
+
+
+
+
+
+
+
+
 
 ```html
 @php($currencySign = config('mohamed7sameer.backpack-shop.currency.sign'))
@@ -289,11 +316,19 @@ Using `shoppingcart()->products`, you can display the products in the cart:
 @endforelse
 ```
 
+
 &nbsp;
 
-#### Totals
+#### الإجماليات
 
-The cart also provides an easy way to display totals. You can get an array with all the totals you need using `shoppingcart()->totals`, which will give you the following response:
+توفر العربة أيضًا وسيلة سهلة لعرض الإجماليات. يمكنك الحصول على مصفوفة تحتوي على جميع الإجماليات التي تحتاجها باستخدام `shoppingcart()->totals`، والتي ستقدم لك الاستجابة التالية:
+
+
+
+
+
+
+
 
 ```php
 [
@@ -317,44 +352,57 @@ The cart also provides an easy way to display totals. You can get an array with 
 ]
 ```
 
-Use these in your template as you see fit.
+
+
+استخدم هذه في قالبك كما ترون مناسبًا.
 
 &nbsp;
 
 ---
 
-## 3. Checkout and payment
+## 3. إتمام الشراء والدفع
 
-Quick nav:
+التنقل السريع:
 
-- [3.1 Checkout form: address and information](./usage.md#31-checkout-form-address-and-information)
-- [3.2 Shipping and payment](./usage.md#32-shipping-and-payment)
-- [3.3 Using custom payment providers](./usage.md#33-using-custom-payment-providers)
-- [3.4 Processing payment and order confirmation](./usage.md#34-processing-payment-and-order-confirmation)
+- [3.1 نموذج الشراء: العنوان والمعلومات](./usage.md#31-checkout-form-address-and-information)
+- [3.2 الشحن والدفع](./usage.md#32-shipping-and-payment)
+- [3.3 استخدام مقدمي الدفع المخصصين](./usage.md#33-using-custom-payment-providers)
+- [3.4 معالجة الدفع وتأكيد الطلب](./usage.md#34-processing-payment-and-order-confirmation)
 
 &nbsp;
 
-### 3.1 Checkout form: address and information
+### 3.1 نموذج الشراء: العنوان والمعلومات
 
-This package is a backend/CRUD focused package, which means that it does not include templating for the frontend of the checkout process. It does, however, provide controller functionality to process the required information to accept an order and create a payment request.
+هذه الحزمة موجهة للخلفية/CRUD، وهذا يعني أنها لا تشمل قوالب لواجهة المستخدم الأمامية لعملية الشراء. ومع ذلك، توفر وظائف تحكم لمعالجة المعلومات الضرورية لقبول الطلب وإنشاء طلب دفع.
 
-By default, you can send the checkout form with address info to `/shopping-cart/checkout` using a `POST` request. This route saves the information to the cart and redirects the customer to the next step (for which you need to provide the URL, see below).
+بشكل افتراضي، يمكنك إرسال نموذج الشراء مع معلومات العنوان إلى `/shopping-cart/checkout` باستخدام طلب `POST`. يقوم هذا المسار بحفظ المعلومات في العربة ويعيد توجيه العميل إلى الخطوة التالية (حيث يجب عليك توفير عنوان URL، انظر أدناه).
 
-In addition to the `@csfr` field, the form needs to include at least:
+بالإضافة إلى حقل `@csfr`، يجب أن يحتوي النموذج على الأقل على:
 
-| name         | type   | comment                                                                                         |
+| الاسم         | النوع   | التعليق                                                                                         |
 |--------------|--------|-------------------------------------------------------------------------------------------------|
-| email        | email  | needs to be a valid email address                                                               |
-| name         | string |                                                                                                 |
-| address      | string |                                                                                                 |
-| zipcode      | string |                                                                                                 |
-| city         | string |                                                                                                 |
-| country      | string | best to use a select that only shows countries for which valid shipping rules exist<sup>1</sup> |
-| redirect_url | string | where to send the customer after validating the address info (see 3.2 below)                    |
+| البريد الإلكتروني        | بريد إلكتروني  | يجب أن يكون عنوان بريد إلكتروني صالح                                                               |
+| الاسم         | نص |                                                                                                 |
+| العنوان      | نص |                                                                                                 |
+| الرمز البريدي      | نص |                                                                                                 |
+| المدينة         | نص |                                                                                                 |
+| الدولة      | نص | من الأفضل استخدام اختيار يظهر فقط الدول التي تتوفر فيها قواعد الشحن الصحيحة<sup>1</sup> |
+| عنوان URL للتوجيه | نص | حيث يتم إرسال العميل بعد التحقق من معلومات العنوان (انظر 3.2 أدناه)                    |
 
-#### <sup>1</sup> Show only countries with valid shipping rules:
+#### <sup>1</sup> عرض الدول ذات القواعد الصحيحة فقط:
 
-This package comes with a function `bpshop_shipping_countries()` that you can use to populate a select field with only countries that have valid shipping rules. Full example:
+تأتي هذه الحزمة مع وظيفة `bpshop_shipping_countries()` التي يمكنك استخدامها لملء حقل اختيار بفقط الدول التي تحتوي على قواعد شحن صحيحة. مثال كامل:
+
+
+
+
+
+
+
+
+
+
+
 
 ```html
 <select class="select2" name="country" id="checkout-country">
@@ -365,37 +413,49 @@ This package comes with a function `bpshop_shipping_countries()` that you can us
 </select>
 ```
 
+
+
+
 &nbsp;
 
-### 3.2 Shipping and payment
+### 3.2 الشحن والدفع
 
-The next screen should show the customer a summary of the order, the information entered, and the shipping method that has been selected for them.
+يجب أن تعرض الشاشة التالية للعميل ملخصًا للطلب، والمعلومات المدخلة، وطريقة الشحن التي تم اختيارها لهم.
 
-#### Address details
+#### تفاصيل العنوان
 
-Showing address details is easy. You can use the `shoppingcart()->getAddress('type')`, where `type` can be any variable included in the table above (except `redirect_url`).
+عرض تفاصيل العنوان أمر سهل. يمكنك استخدام `shoppingcart()->getAddress('type')`، حيث يمكن أن يكون `type` أي متغير مدرج في الجدول أعلاه (باستثناء `redirect_url`).
 
-#### Shipping details
+#### تفاصيل الشحن
 
-Showing the shipping details is also easy. By default, this package selects the cheapest available shipping option for the products in the cart, and the selected country. It is possible that no valid shipping rules are available. In that case, you need to stop the user here and tell them wat to do (although preferably, the shipping rules entered using the CRUD panels should cover all likely scenarios).
+عرض تفاصيل الشحن أيضًا سهل. بشكل افتراضي، تختار هذه الحزمة خيار الشحن الأرخص المتاح للمنتجات في العربة والبلد المحدد. قد يكون من الممكن أن لا تكون هناك قواعد شحن صحيحة متاحة. في هذه الحالة، يجب عليك إيقاف المستخدم هنا وإخبارهم بما يجب فعله (على الرغم من أنه في الأفضل يجب أن تغطي قواعد الشحن التي تم إدخالها باستخدام لوحات التحكم كل السيناريوهات الممكنة).
 
-Use the `shoppingcart()->totals` array to get the shipping with or without VAT, as well as the shipping description. You can also use `shoppingcart()->shipping_incl_vat`, `shoppingcart()->shipping_excl_vat`, and `shoppingcart()->getShippingDescription()` directly, but using the totals array is probably easier.
+استخدم مصفوفة `shoppingcart()->totals` للحصول على تكلفة الشحن بما في ذلك أو بدون ضريبة القيمة المضافة، وكذلك وصف الشحن. يمكنك أيضًا استخدام `shoppingcart()->shipping_incl_vat`، `shoppingcart()->shipping_excl_vat`، و `shoppingcart()->getShippingDescription()` مباشرة، ولكن استخدام مصفوفة الإجماليات ربما يكون أسهل.
 
-#### Payment method
+#### طريقة الدفع
 
-Depending on the payment method used, this section may change slightly. Refer to the documentation for the paymentmethod you've picked to see if you need to do something else. Usually, however, most of this will still apply.
+تتغير هذه القسم تبعًا لطريقة الدفع المستخدمة. راجع وثائق طريقة الدفع التي اخترتها لمعرفة ما إذا كان عليك فعل شيء آخر. ومع ذلك، عادةً، سيظل معظم هذا ساري المفعول.
 
-By default, you can send the form with the selected payment method to `/shopping-cart/payment` using a `POST` request. This route saves the information to the cart and redirects the customer to the checkout URL that the payment provider will provide.
+بشكل افتراضي، يمكنك إرسال النموذج بوسيلة الدفع المحددة إلى `/shopping-cart/payment` باستخدام طلب `POST`. يقوم هذا المسار بحفظ المعلومات في العربة ويعيد توجيه العميل إلى عنوان URL الخروج الذي سيقدمه مزود الدفع.
 
-In addition to the `@csfr` field, the form needs to include at least:
+بالإضافة إلى حقل `@csfr`، يجب أن يحتوي النموذج على الأقل على:
 
-| name           | type   | comment                                                               |
+| الاسم           | النوع   | التعليق                                                               |
 |----------------|--------|-----------------------------------------------------------------------|
-| payment_method | id     | valid values depend on which payment method you are using<sup>1</sup> |
+| طريقة الدفع | معرف     | قيم صالحة تعتمد على طريقة الدفع التي تستخدمها<sup>1</sup> |
 
-#### <sup>1</sup> Showing valid payment methods:
+#### <sup>1</sup> عرض طرق الدفع الصالحة:
 
-In order to show the payment methods valid for the payment provider selected in the `config/backpack-shop.php` file, you can use the helper function `shoppingcart()->getPaymentMethods()`. Full example:
+لعرض وسائل الدفع الصالحة لمزود الدفع المحدد في ملف `config/backpack-shop.php`، يمكنك استخدام وظيفة المساعدة `shoppingcart()->getPaymentMethods()`. مثال كامل:
+
+
+
+
+
+
+
+
+
 
 ```html
 <select class="select2 payment-method" name="payment_method" id="payment-method">
@@ -405,41 +465,79 @@ In order to show the payment methods valid for the payment provider selected in 
 </select>
 ```
 
-That should probably do the trick for most payment methods. When this form is submitted to `/shopping-cart/payment` using a `POST` request, the customer will be redirected to the checkout URL provided by the payment provider. After the payment (success or failure), the customer will be redirected back to the site. You can customize which view is shown to them at this point, in the `config/backpack-shop.php` file. See also 3.4 below.
 
-By default, if no additional payment method is installed, the package uses the "NoPayment" provider. This means that after this step, instead of redirecting the customer to a payment provider, the thanks page is immediately shown, and the order confirmations are automatically sent out as well.
 
-&nbsp;
 
-### 3.3 Using custom payment providers
+تلك الخطوات يجب أن تكون كافية لمعظم وسائل الدفع. عندما يتم إرسال هذا النموذج إلى `/shopping-cart/payment` باستخدام طلب `POST`، سيتم توجيه العميل إلى عنوان URL الخاص بالخروج الذي يتم توفيره من قبل مقدم الخدمة للدفع. بعد الدفع (نجاحًا أو فشل)، سيتم توجيه العميل مرة أخرى إلى الموقع. يمكنك تخصيص العرض الذي يتم عرضه لهم في هذه النقطة، في ملف `config/backpack-shop.php`. انظر أيضاً 3.4 أدناه.
 
-See [payment-providers.md](./payment-providers.md)
+افتراضيًا، إذا لم يتم تثبيت أي وسيلة دفع إضافية، يستخدم الحزمة مقدم الخدمة "NoPayment". وهذا يعني أنه بعد هذه الخطوة، بدلاً من توجيه العميل إلى مقدم الدفع، يتم عرض صفحة الشكر مباشرة، وترسل تأكيدات الطلب تلقائيًا أيضًا.
 
 &nbsp;
 
-### 3.4 Processing payment and order confirmation
+### 3.3 استخدام مقدمي الدفع المخصصين
 
-When the customer returns from the payment provider (or immediately, in the case of using the default NoPayment provider), they are shown the view which is configured in the `config/backpack-shop.php` file. 
+انظر إلى [payment-providers.md](./payment-providers.md)
 
-**Note: the view should not require any variables present, otherwise this will generate an error on missing variables.**. 
+&nbsp;
 
-The default route provides the view with a `$payment_result` variable, which contains:
+### 3.4 معالجة الدفع وتأكيد الطلب
 
-- `$payment_result['status']` which has the order status ('new', 'paid', 'cancelled', or 'error')
-- `$payment_result['msg']` for the translated message to go with that status (see `Order` class and `lang/*/order.php`)
+عندما يعود العميل من مقدم الخدمة للدفع (أو على الفور، في حال استخدام مقدم الخدمة NoPayment الافتراضي)، يتم عرض العرض الذي تم تكوينه في ملف `config/backpack-shop.php`.
 
-At this point, the order is also available in the `Orders` CRUD panel. That's it, the order is now either fully processed or cancelled. By default, the shopping cart is emptied when an order is succesful (new or paid) but retained when the payment did not process correctly (cancelled or error) so the customer can easily try again without losing the cart.
+**ملاحظة: يجب ألا يتطلب العرض أي متغيرات موجودة، وإلا سيتم إثارة خطأ بسبب النقص في المتغيرات**.
 
-The payment provider contains a function that determines when the order confirmation is sent out, at which point the customer will receive an email with their PDF invoice attached. The default `NoPayment` provider does this immediately when the order is placed, since there is no way to further process the order. Other payment providers may provide additional config here (again, see [payment-providers.md](./payment-providers.md)).
+المسار الافتراضي يوفر العرض بمتغير `$payment_result`، الذي يحتوي على:
 
-- E-mail contents can be customized by overriding the `backpack-shop/views/email/invoice` view. 
-- PDF contents can be customized by overriding the `backpack-shop/views/pdf/invoice` view.
-- The email and PDF can also be (partially) customized by publishing and editing the language files
+- `$payment_result['status']` الذي يحمل حالة الطلب ('new', 'paid', 'cancelled', أو 'error')
+- `$payment_result['msg']` لرسالة المترجمة المرافقة لتلك الحالة (انظر إلى فئة `Order` و `lang/*/order.php`)
+
+في هذه النقطة، يكون الطلب متاحًا أيضًا في لوحة السيطرة `Orders` CRUD. هذا هو كل شيء، الطلب الآن إما معالج بالكامل أو ملغى. بشكل افتراضي، يتم تفريغ سلة التسوق عندما يكون الطلب ناجحًا (جديد أو مدفوع) ولكنه يتم الاحتفاظ بها عندما لا يتم معالجة الدفع بشكل صحيح (ملغى أو في حالة خطأ) حتى يتمكن العميل من المحاولة مرة أخرى دون فقدان العربة.
+
+مقدم الدفع يحتوي على وظيفة تحدد متى يتم إرسال تأكيد الطلب، في هذه اللحظة سيتلقى العميل بريدًا إلكترونيًا يحتوي على فاتورة PDF المرفقة. مقدم الخدمة "NoPayment" الافتراضي يقوم بذلك على الفور عندما يتم وضع الطلب، حيث لا يوجد وسيلة لمعالجة الطلب بشكل إضافي. قد يقدم مقدمو الدفع الآخرون تكوينًا إضافيًا هنا (مرة أخرى، انظر إلى [payment-providers.md](./payment-providers.md)).
+
+- يمكن تخصيص محتوى البريد الإلكتروني عن طريق تجاوز عرض `backpack-shop/views/email/invoice`.
+- يمكن تخصيص محتوى PDF عن طريق تجاوز عرض `backpack-shop/views/pdf/invoice`.
+- يمكن أيضًا تخصيص البريد الإلكتروني و PDF (جزئيًا) عن طريق نشر وتحرير ملفات اللغة.
 
 &nbsp;
 
 ___
 
-## 4 Additional configuration
+## 4 تكوين إضافي
 
-There is a whole lot more that can be configured across this package. If I ever find the time (or please feel free to help me, see [contributing.md](../contributing.md)), I will try to put everything in a logical place. But this is quite a lot of work for stuff that is probably not useful for most scenarios. For now, I therefore suggest you look at the `config/backpack-shop.php` file, which does contain additional info and pointers that are not entirely covered in this usage doc.
+هناك الكثير الذي يمكن تكوينه في هذه الحزمة. إذا وجدت الوقت في يوم من الأيام (أو يرجى أن تشعر بالحرية لمساعدتي، انظر إلى [contributing.md](../contributing.md))، سأحاول وضع كل شيء في مكان منطقي. ولكن هذا يعتبر الكثير من العمل لأشياء قد لا تكون مفيدة في معظم الحالات. لذلك، أقترح في الوقت الحالي أن تلقي نظرة على ملف `config/backpack-shop.php`، الذي يحتوي على معلومات إضافية وإشارات قد لا تكون مغطاة تمامًا في هذا الوثائق.
+
+
+
+
+
+
+
+
+
+## ملحوظات
+
+
+
+
+
+يشير ال price في التجارة الإلكترونية إلى السعر الذي يتم عرضه للمنتج على الموقع. 
+بينما يشير ال sale price إلى السعر الذي يتم بيع المنتج به بعد تخفيضه. 
+يتم استخدام ال sale price عادةً لزيادة المبيعات والترويج للمنتجات.
+ومن الممكن أن يكون هناك تخفيضات مؤقتة في الأسعار لزيادة المبيعات،
+وهذا ما يشير إليه ال sale price
+أما بالنسبة ل price، فهو يشير إلى السعر الأصلي للمنتج قبل تخفيضه. 
+وغالبًا ما يستخدم ال price في الترويج للمنتجات والإشارة إلى قيمة المنتج
+
+<hr>
+
+يشير “Product Properties” في التجارة الإلكترونية إلى الخصائص المختلفة للمنتجات، مثل الأبعاد والوزن والمواد المستخدمة في صنع المنتج. بينما يشير “Product Variations” إلى الإصدارات المختلفة من نفس المنتج، مثل الأحجام والألوان والأشكال. يمكن للعميل اختيار إحدى الإصدارات المختلفة لشراء المنتج.
+
+عادةً ما يتم استخدام “Product Properties” لوصف المنتج بشكل أفضل، بينما يستخدم “Product Variations” لعرض الإصدارات المختلفة من نفس المنتج. يمكن أيضًا استخدام “Product Variations” لعرض تخفيضات مؤقتة في الأسعار.
+
+
+
+
+
+
+</div>
