@@ -1,113 +1,66 @@
-# BackpackShop
+<div dir="rtl">
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
 
-تضيف هذه الحزم نماذج قابلة للتخصيص ولوحات CRUD ووظائف الطلب لإنشاء متجر ويب باستخدامها
- [Backpack for Laravel](https://backpackforlaravel.com). 
 
-Functionality:
-- Create product categories and products
-- Add custom product attributes and statuses
-- Process orders and payments
-- Customizable shipping rules based on location, package size and/or weight
-- Fully featured CRUD panels for all of the above
-- Shopping cart helper
-- Automated installer
-- Fully translatable CRUD using default lang files (EN and NL included)
+# backpack shop
 
-## Requirements
 
-First, make sure you are running `PHP 8.1+` and have installed:
+تقوم هذه الحزمة بإضافة نماذج قابلة للتخصيص ولوحات CRUD ووظائف الطلب لإنشاء متجر ويب باستخدام
+[Backpack for Laravel](https://backpackforlaravel.com).
 
-- Backpack (`5.x`) ([install guide](https://backpackforlaravel.com/docs/5.x/installation))
-- Backpack Pro (sorry, it's required for now; see [pricing](https://backpackforlaravel.com/pricing))
+الوظائف:
+- إنشاء فئات ومنتجات المنتج
+- إضافة سمات المنتج المخصصة والحالات
+- معالجة الطلبات والمدفوعات
+- قواعد الشحن قابلة للتخصيص استنادًا إلى الموقع وحجم الحزمة و/أو الوزن
+- لوحات CRUD كاملة الميزات لكل ما تم ذكره أعلاه
+- مساعد عربة التسوق
+- المثبت التلقائي
+- CRUD قابل للترجمة بالكامل باستخدام ملفات اللغة الافتراضية (تشمل EN و NL)
 
-This package was tested extensively with Laravel 8 and Backpack 5. It seemed fine with Laravel 9 and 10, and Backpack 6 as well, but no guarantees (yet). I will be updating the package for Backpack 6 compatibility, but I have no idea on the ETA for that.
+## الشروط
 
-I'm also planning to make Backpack Pro optional, so it will be more accessible. Again, no ETA.
+أولاً، تأكد من تشغيل `PHP 8.1+` وتثبيت:
 
-## Installation
+- Backpack (`6.x`)
+- Backpack Pro
 
-### Step 1 - require package
 
-Install the package via Composer
+## التثبيت
+
+### الخطوة 1 - require package
+
+قم بتثبيت الحزمة عبر Composer
 
 ```bash
 composer require mohamed7sameer/backpack6-shop
 ```
 
-### Step 2 - run installer
+### الخطوة 2 - run installer
 
-Then run the installer, which publishes the config file, runs all required migrations, and adds shop items to the sidebar_contents file.
+ثم قم بتشغيل المثبت، الذي ينشر ملف التكوين، ويشغل جميع الهجرات المطلوبة، ويضيف عناصر المتجر إلى ملف sidebar_contents.
 
 ```bash
 php artisan backpack-shop:install
 ```
 
-### Step 3 - config
+### الخطوة 3 - config
 
-Please check `config/mohamed7sameer/backpack6-shop.php` since some things will need to be configured for your particular use case.
+يرجى التحقق من `config/mohamed7sameer/backpack6-shop.php` حيث ستحتاج بعض الأمور إلى التكوين وفقًا لحالتك الاستخدام الخاصة.
 
-### Step 4 - minimum requirements
+### الخطوة 4 - الحد الأدنى من المتطلبات
 
-After updating the config file, almost everything should run out of the box, but a couple of things will need to be done in the Backpack Admin to use the package effectively (i.e., prevent unexpected errors). The bare minimum is:
+بعد تحديث ملف التكوين، يجب أن يعمل كل شيء تقريبًا من دون أي مشاكل، ولكن سيتعين عليك القيام ببعض الأشياء في لوحة التحكم لاستخدام الحزمة بشكل فعّال (أي منع الأخطاء غير المتوقعة). الحد الأدنى هو:
 
-- Define at least one VAT class in the `VAT classes` CRUD panel
-- Define at least one package size (if using, see config) using the `Shipping sizes` CRUD panel
-- Create at least one shipping rule on the `Shipping rules` CRUD panel
-- Maybe add `Categories`, and some `Products`? It's a webshop package after all.
-
-### Step 5 (optional but recommened) - pick or build payment provider
-
-This package does not come with a payment provider included. It does, however, come with a "No payment" provider. This is the default, and works in all cases where customers don't have to pay online (i.e., they pay using bank transfer, you only offer pay and collect, or everything in the store is free).
-
-If you do need a payment provider, I have written one for [Mollie](https://mollie.com), which you can find here: [mohamed7sameer/backpack6-shop-mollie](https://github.com/mohamed7sameer/backpack6-shop-mollie). Install instructions and how to configure are also in the readme for that package.
-
-It's also relatively easy to write your own if you already have code to talk with your payment provider of choice and only need to integrate it with the shopping cart and checkout functionality of this package. See [payment-providers.md](./docs/payment-providers.md) for the documentation.
-
-## Usage
-
-See [docs/usage.md](./docs/usage.md).
-
-## Change log
-
-Changes are documented here on Github. Please browse the commit history.
-
-Breaking changes are be listed here:
-
-### 0.2.0
-
-- 0.1.x used a single category per product. This version adds a pivot table which replaces this functionality. This means you will have to re-enter all categories manually (or write a quick script to do this automatically). It also means that if you are using $product->category anywhere, this no longer works and will generate an error.
-
-## Testing
-
-This package provides no testing.
-
-## Contributing
-
-Please see [contributing.md](contributing.md) for a todolist and howtos.
-
-## Security
-
-If you discover any security related issues, please send an email to [info@mohammed-samir.com](mailto:info@mohammed-samir.com) instead of using the issue tracker.
-
-## Credits
-
-- Author: [mohammed-samir.com](https://mohammed-samir.com) (github: [mohamed7sameer](https://github.com/mohamed7sameer))
-- Built with [Backpack for Laravel](https://backpackforlaravel.com). Special thanks to [Cristian Tăbăcitu](https://github.com/tabacitu) and the rest of the Backpack team for the awesome work.
-
-## License
-
-This project was released under MIT, so you can install it on top of any Backpack & Laravel project. Please see the [license file](license.md) for more information. 
-
-However, please note that you do need Backpack Pro (note: 5.x) installed, which is proprietary software. Please refer to their [pricing](https://backpackforlaravel.com/pricing) page to get started.
-
-A version that does not require Backpack Pro but only the open core source is planned, but will probably not be released for a while.
+- تعريف فئة واحدة على الأقل لضريبة القيمة المضافة في لوحة التحكم `VAT classes`
+- تعريف حجم حزمة واحد على الأقل (إذا كنت تستخدم ذلك، انظر التكوين) باستخدام لوحة التحكم `Shipping sizes`
+- إنشاء قاعدة شحن واحدة على لوحة التحكم `Shipping rules`
+- ربما إضافة بعض "الفئات" وبعض "المنتجات"؟ إنها حزمة متجر ويب في النهاية.
 
 
-[ico-version]: https://img.shields.io/packagist/v/mohamed7sameer/backpack6-shop.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/mohamed7sameer/backpack6-shop.svg?style=flat-square
+## الاستخدام
 
-[link-packagist]: https://packagist.org/packages/mohamed7sameer/backpack6-shop
-[link-downloads]: https://packagist.org/packages/mohamed7sameer/backpack6-shop
+انظر [docs/usage.md](./docs/usage.md).
+
+
+</div>
